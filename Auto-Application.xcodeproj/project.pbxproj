@@ -17,6 +17,7 @@
 		206F9E5A1F42F80700162707 /* AutoUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206F9E581F42F80700162707 /* AutoUsersTableViewCell.swift */; };
 		206F9E5B1F42F80700162707 /* AutoUsersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 206F9E591F42F80700162707 /* AutoUsersTableViewCell.xib */; };
 		206F9E5F1F442F1D00162707 /* NewUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206F9E5E1F442F1D00162707 /* NewUserTableViewController.swift */; };
+		206F9E621F4446F400162707 /* AlertMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206F9E611F4446F400162707 /* AlertMethods.swift */; };
 		56557DB54887ED80DD5B51A1 /* Pods_Auto_Application.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C70C7BE87D700C7597E62D5E /* Pods_Auto_Application.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		206F9E581F42F80700162707 /* AutoUsersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoUsersTableViewCell.swift; sourceTree = "<group>"; };
 		206F9E591F42F80700162707 /* AutoUsersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AutoUsersTableViewCell.xib; sourceTree = "<group>"; };
 		206F9E5E1F442F1D00162707 /* NewUserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserTableViewController.swift; sourceTree = "<group>"; };
+		206F9E611F4446F400162707 /* AlertMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertMethods.swift; sourceTree = "<group>"; };
 		24517120976C4F32B2575F56 /* Pods-Auto-Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Auto-Application.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Auto-Application/Pods-Auto-Application.debug.xcconfig"; sourceTree = "<group>"; };
 		B6A3F4B336F3B47FF267F2F0 /* Pods-Auto-Application.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Auto-Application.release.xcconfig"; path = "Pods/Target Support Files/Pods-Auto-Application/Pods-Auto-Application.release.xcconfig"; sourceTree = "<group>"; };
 		C70C7BE87D700C7597E62D5E /* Pods_Auto_Application.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Auto_Application.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +73,7 @@
 		200F51BC1F4195D5002EB1EC /* Auto-Application */ = {
 			isa = PBXGroup;
 			children = (
+				206F9E601F4446C700162707 /* Helped Methods */,
 				206F9E4D1F41998400162707 /* SQLDatabase */,
 				206F9E4C1F41997B00162707 /* Controller */,
 				206F9E4B1F41997500162707 /* Model */,
@@ -140,6 +143,14 @@
 				206F9E591F42F80700162707 /* AutoUsersTableViewCell.xib */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		206F9E601F4446C700162707 /* Helped Methods */ = {
+			isa = PBXGroup;
+			children = (
+				206F9E611F4446F400162707 /* AlertMethods.swift */,
+			);
+			name = "Helped Methods";
 			sourceTree = "<group>";
 		};
 		EB8A3FC150315A9D40482BF3 /* Pods */ = {
@@ -286,6 +297,7 @@
 			files = (
 				206F9E501F419AD000162707 /* DatabaseManger.swift in Sources */,
 				200F51BE1F4195D5002EB1EC /* AppDelegate.swift in Sources */,
+				206F9E621F4446F400162707 /* AlertMethods.swift in Sources */,
 				206F9E5A1F42F80700162707 /* AutoUsersTableViewCell.swift in Sources */,
 				206F9E561F42F16F00162707 /* AutoUsersViewController.swift in Sources */,
 				206F9E5F1F442F1D00162707 /* NewUserTableViewController.swift in Sources */,

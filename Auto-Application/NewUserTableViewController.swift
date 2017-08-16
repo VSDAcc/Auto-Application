@@ -11,7 +11,7 @@ protocol SaveNewUserHandler: class {
     func saveNewUser(name: String, avatarImage: String)
     func updateUser(userID: Int64, newUser: User)
 }
-class NewUserTableViewController: UITableViewController {
+class NewUserTableViewController: UITableViewController, PresenterAlertHandler {
     
     @IBOutlet weak var avatarImageView: UIImageView! {
         didSet {
@@ -38,12 +38,18 @@ class NewUserTableViewController: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveNewUser(_ :)))
     }
     func saveNewUser(_ sender: UIBarButtonItem) {
-        _ = self.navigationController?.popViewController(animated: true)
-        if user != nil {
-            let newUser = AutoUser(name: userNameTextField.text!, userID: user!.userID, imageString: "account.jpeg")
-            delegate?.updateUser(userID: user!.userID, newUser: newUser)
+        if !userNameTextField.text!.isEmpty {
+            _ = self.navigationController?.popViewController(animated: true)
+            if user != nil {
+                let newUser = AutoUser(name: userNameTextField.text!, userID: user!.userID, imageString: "account.jpeg")
+                delegate?.updateUser(userID: user!.userID, newUser: newUser)
+            }else {
+                delegate?.saveNewUser(name: userNameTextField.text!, avatarImage: "account.jpeg")
+            }
         }else {
-            delegate?.saveNewUser(name: userNameTextField.text!, avatarImage: "account.jpeg")
+            DispatchQueue.main.async {
+                self.presentAlertWith(title: "Error", massage: "Please fill user name")
+            }
         }
     }
     //MARK:-UITableViewDelegate

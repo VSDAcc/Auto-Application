@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class AutoUsersViewController: UIViewController, SaveNewUserHandler {
+class AutoUsersViewController: UIViewController, SaveNewUserHandler, PresenterAlertHandler {
     struct CellConstants {
         static let cellID = "AutoUserCell"
         static let cellNIB = "AutoUsersTableViewCell"
@@ -41,13 +41,17 @@ class AutoUsersViewController: UIViewController, SaveNewUserHandler {
         usersDatabaseDelegate?.queryAllUsers(onSucces: { [unowned self](usersArray) in
             self.users = usersArray
             }, onFailure: { (error) in
-                print(error)
+                DispatchQueue.main.async {
+                    self.presentAlertWith(title: "Error", massage: error)
+                }
         })
     }
     //MARK:-SaveNewUserHandler 
     func saveNewUser(name: String, avatarImage: String) {
         usersDatabaseDelegate?.addUser(inputName: name, inputImageName: avatarImage, onFailure: { (error) in
-            print(error)
+            DispatchQueue.main.async {
+                self.presentAlertWith(title: "Error", massage: error)
+            }
         })
     }
     func updateUser(userID: Int64, newUser: User) {
