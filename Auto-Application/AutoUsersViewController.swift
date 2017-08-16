@@ -19,7 +19,7 @@ class AutoUsersViewController: UIViewController, SaveNewUserHandler, PresenterAl
         didSet {
             let cellNib = UINib(nibName: CellConstants.cellNIB, bundle: nil)
             tableView.register(cellNib, forCellReuseIdentifier: CellConstants.cellID)
-            tableView.estimatedRowHeight = 80.0
+            tableView.estimatedRowHeight = 100.0
             tableView.rowHeight = UITableViewAutomaticDimension
         }
     }
@@ -47,8 +47,8 @@ class AutoUsersViewController: UIViewController, SaveNewUserHandler, PresenterAl
         })
     }
     //MARK:-SaveNewUserHandler 
-    func saveNewUser(name: String, avatarImage: String) {
-        usersDatabaseDelegate?.addUser(inputName: name, inputImageName: avatarImage, onFailure: { (error) in
+    func saveNewUser(newUser: User) {
+        usersDatabaseDelegate?.addUser(user: newUser, onFailure: { (error) in
             DispatchQueue.main.async {
                 self.presentAlertWith(title: "Error", massage: error)
             }
@@ -104,7 +104,7 @@ extension AutoUsersViewController: UITableViewDelegate {
         return true
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80.0
+        return 100.0
     }
 }
 extension UIViewController {

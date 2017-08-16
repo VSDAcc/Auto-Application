@@ -12,6 +12,7 @@ class AutoUsersTableViewCell: UITableViewCell {
     @IBOutlet weak var userAvatarImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     
+    @IBOutlet weak var userAdressLabel: UILabel!
     var autoUser: User! {
         didSet {
             updateUI()
@@ -21,6 +22,7 @@ class AutoUsersTableViewCell: UITableViewCell {
         DispatchQueue.main.async {
             self.userAvatarImage.image = UIImage(named: self.autoUser.imageString)
             self.userNameLabel.text = self.autoUser.name
+            self.userAdressLabel.text = self.autoUser.adress
         }
     }
     override func layoutSubviews() {

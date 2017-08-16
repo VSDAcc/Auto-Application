@@ -20,12 +20,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="386" height="95"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjA-Pz-9oJ">
-                        <rect key="frame" x="94" y="17" width="284" height="60"/>
-                        <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="28"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qwU-eI-SgF">
+                        <rect key="frame" x="94" y="18" width="270" height="58"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjA-Pz-9oJ">
+                                <rect key="frame" x="0.0" y="0.0" width="270" height="31"/>
+                                <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="637-gp-nfu">
+                                <rect key="frame" x="0.0" y="36" width="270" height="22"/>
+                                <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zat-Yb-h3l">
                         <rect key="frame" x="19" y="17" width="60" height="60"/>
                         <subviews>
@@ -44,16 +55,17 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="qwU-eI-SgF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="AMb-bg-nT9"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Zat-Yb-h3l" secondAttribute="bottom" constant="10" id="Bdp-yE-wC6"/>
                     <constraint firstItem="Zat-Yb-h3l" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="11" id="PAs-8i-Ai4"/>
                     <constraint firstItem="Zat-Yb-h3l" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="9" id="QRR-kg-NvE"/>
-                    <constraint firstItem="WjA-Pz-9oJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="9" id="QiI-ce-9LI"/>
-                    <constraint firstItem="WjA-Pz-9oJ" firstAttribute="leading" secondItem="Zat-Yb-h3l" secondAttribute="trailing" constant="15" id="VoR-76-uGZ"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="WjA-Pz-9oJ" secondAttribute="bottom" constant="10" id="onk-B6-S0h"/>
-                    <constraint firstItem="WjA-Pz-9oJ" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="rq1-M7-ldB"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="qwU-eI-SgF" secondAttribute="trailing" constant="14" id="VOI-eK-gTA"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="qwU-eI-SgF" secondAttribute="bottom" constant="10" id="hXh-e3-TX2"/>
+                    <constraint firstItem="qwU-eI-SgF" firstAttribute="leading" secondItem="Zat-Yb-h3l" secondAttribute="trailing" constant="15" id="pL5-uL-IWO"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="userAdressLabel" destination="637-gp-nfu" id="4Xt-6U-RCi"/>
                 <outlet property="userAvatarImage" destination="xAA-9s-pSs" id="9y4-Wb-69I"/>
                 <outlet property="userNameLabel" destination="WjA-Pz-9oJ" id="UzE-b9-mep"/>
             </connections>
