@@ -22,9 +22,12 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler {
     }
     @IBOutlet weak var userNameTextField: UITextField! {
         didSet {
-            userNameTextField.becomeFirstResponder()
+            DispatchQueue.main.async {
+                self.userNameTextField.becomeFirstResponder()
+            }
             if user != nil {
                 userNameTextField.text = user!.name
+                userNameTextField.delegate = self
             }
         }
     }
@@ -32,6 +35,7 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler {
         didSet {
             if user != nil {
                 userAdressTextField.text = user!.adress
+                userAdressTextField.delegate = self
             }
         }
     }
@@ -49,7 +53,7 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler {
         if !userNameTextField.text!.isEmpty && !userAdressTextField.text!.isEmpty {
             _ = self.navigationController?.popViewController(animated: true)
             if user != nil {
-                let newUser = AutoUser(name: userNameTextField.text!, userID: user!.userID, imageString: "account.jpeg", adress: userAdressTextField.text!)
+                let newUser = AutoUser(name: userNameTextField.text!, userID: user!.userID, imageString: "driver.png", adress: userAdressTextField.text!)
                 delegate?.updateUser(userID: user!.userID, newUser: newUser)
             }else {
                 let newUser = AutoUser(name: userNameTextField.text!, imageString: "account.jpeg", adress: userAdressTextField.text!)

@@ -26,8 +26,5 @@ class AutoUser: User {
     }
     convenience init (name: String, imageString: String, adress: String) {
         self.init(name: name, userID: 0, imageString: imageString, adress: adress)
-        self.name = name
-        self.imageString = imageString
-        self.adress = adress
     }
 }

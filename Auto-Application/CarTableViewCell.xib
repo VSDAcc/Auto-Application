@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A201w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="CarTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="CarCell" rowHeight="110" id="JmO-AR-DXE" customClass="CarTableViewCell" customModule="Auto_Application" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="386" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JmO-AR-DXE" id="35r-YW-tqA">
+                <rect key="frame" x="0.0" y="0.0" width="386" height="110"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="D7l-qV-oh5">
+                        <rect key="frame" x="108.5" y="18" width="255.5" height="73.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcT-5d-dN0">
+                                <rect key="frame" x="0.0" y="0.0" width="255.5" height="39.5"/>
+                                <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvG-sk-MNH">
+                                <rect key="frame" x="0.0" y="44.5" width="255.5" height="29"/>
+                                <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Fb-IF-A24">
+                        <rect key="frame" x="19" y="17" width="74.5" height="74.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tPt-6k-Ymz">
+                                <rect key="frame" x="0.0" y="0.0" width="74.5" height="74.5"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="tPt-6k-Ymz" secondAttribute="trailing" id="GKI-Gm-E3t"/>
+                            <constraint firstAttribute="bottom" secondItem="tPt-6k-Ymz" secondAttribute="bottom" id="KbS-OQ-ZNM"/>
+                            <constraint firstItem="tPt-6k-Ymz" firstAttribute="top" secondItem="3Fb-IF-A24" secondAttribute="top" id="m00-Pa-xGH"/>
+                            <constraint firstItem="tPt-6k-Ymz" firstAttribute="width" secondItem="3Fb-IF-A24" secondAttribute="height" multiplier="1:1" id="m7s-eY-R9e"/>
+                            <constraint firstItem="tPt-6k-Ymz" firstAttribute="leading" secondItem="3Fb-IF-A24" secondAttribute="leading" id="xtC-zp-kYV"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="3Fb-IF-A24" firstAttribute="top" secondItem="35r-YW-tqA" secondAttribute="topMargin" constant="9" id="KNA-3X-2a9"/>
+                    <constraint firstItem="D7l-qV-oh5" firstAttribute="top" secondItem="35r-YW-tqA" secondAttribute="topMargin" constant="10" id="Rn2-LK-gov"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="D7l-qV-oh5" secondAttribute="trailing" constant="14" id="Syw-YZ-Hpd"/>
+                    <constraint firstItem="3Fb-IF-A24" firstAttribute="leading" secondItem="35r-YW-tqA" secondAttribute="leadingMargin" constant="11" id="Zs2-6W-bou"/>
+                    <constraint firstItem="D7l-qV-oh5" firstAttribute="leading" secondItem="3Fb-IF-A24" secondAttribute="trailing" constant="15" id="ckA-WF-xMF"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="3Fb-IF-A24" secondAttribute="bottom" constant="10" id="ulZ-bg-dgk"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="D7l-qV-oh5" secondAttribute="bottom" constant="10" id="xA7-R8-IQS"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="carAvatarImage" destination="tPt-6k-Ymz" id="qdh-BM-p56"/>
+                <outlet property="carModelLabel" destination="qcT-5d-dN0" id="zAk-bF-2Ur"/>
+                <outlet property="carlicensePlateLabel" destination="yvG-sk-MNH" id="e9v-EB-yB9"/>
+            </connections>
+            <point key="canvasLocation" x="-820" y="82"/>
+        </tableViewCell>
+    </objects>
+</document>

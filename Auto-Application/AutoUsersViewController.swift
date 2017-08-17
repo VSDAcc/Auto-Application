@@ -31,7 +31,7 @@ class AutoUsersViewController: UIViewController, SaveNewUserHandler, PresenterAl
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        usersDatabaseDelegate = DatabaseManager.sharedManager
+        usersDatabaseDelegate = UserDatabaseManager.sharedManager
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -48,7 +48,7 @@ class AutoUsersViewController: UIViewController, SaveNewUserHandler, PresenterAl
     }
     //MARK:-SaveNewUserHandler 
     func saveNewUser(newUser: User) {
-        usersDatabaseDelegate?.addUser(user: newUser, onFailure: { (error) in
+        usersDatabaseDelegate?.addUser(user: newUser, onFailure: { [unowned self] (error) in
             DispatchQueue.main.async {
                 self.presentAlertWith(title: "Error", massage: error)
             }

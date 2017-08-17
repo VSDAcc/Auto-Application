@@ -173,7 +173,7 @@
         <scene sceneID="Mr1-G7-gKr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WPr-aW-Fga" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Users" id="yyK-Ke-daf"/>
+                    <tabBarItem key="tabBarItem" title="Users" image="delivery-man" id="yyK-Ke-daf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mf9-SN-VVq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -192,7 +192,7 @@
         <scene sceneID="Y4X-u4-87g">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7FE-50-tRs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cars" id="wuy-6d-nxv"/>
+                    <tabBarItem key="tabBarItem" title="Cars" image="car-Icon" id="wuy-6d-nxv"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hf2-dW-Ru3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -229,5 +229,7 @@
     </scenes>
     <resources>
         <image name="account" width="300" height="312"/>
+        <image name="car-Icon" width="24" height="24"/>
+        <image name="delivery-man" width="24" height="24"/>
     </resources>
 </document>
