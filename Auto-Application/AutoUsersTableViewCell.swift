@@ -11,8 +11,8 @@ import UIKit
 class AutoUsersTableViewCell: UITableViewCell {
     @IBOutlet weak var userAvatarImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
-    
     @IBOutlet weak var userAdressLabel: UILabel!
+    
     var autoUser: User! {
         didSet {
             updateUI()

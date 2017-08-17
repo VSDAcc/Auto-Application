@@ -56,7 +56,7 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler {
                 let newUser = AutoUser(name: userNameTextField.text!, userID: user!.userID, imageString: "driver.png", adress: userAdressTextField.text!)
                 delegate?.updateUser(userID: user!.userID, newUser: newUser)
             }else {
-                let newUser = AutoUser(name: userNameTextField.text!, imageString: "account.jpeg", adress: userAdressTextField.text!)
+                let newUser = AutoUser(name: userNameTextField.text!, imageString: "driver.jpeg", adress: userAdressTextField.text!)
                 delegate?.saveNewUser(newUser: newUser)
             }
         }else {

@@ -95,13 +95,13 @@ class UserDatabaseManager: UsersDatabaseHandler {
     }
 }
 protocol CarsDatabaseHandler: class {
-    func addCAr(car: CarItem, onFailure:@escaping(_ error: String) -> ())
+    func addCar(car: CarItem, onFailure:@escaping(_ error: String) -> ())
     func queryAllCars(onSucces:@escaping(_ cars: [CarItem]) -> (),
                        onFailure:@escaping(_ error: String) -> ())
     func updateCar(carID: Int64, newCar: CarItem)
     func deleteCar(carID: Int64)
 }
-class CarDatabaseManager {
+class CarDatabaseManager: CarsDatabaseHandler  {
     private static let _sharedManager = CarDatabaseManager()
     static var sharedManager: CarDatabaseManager {
         return _sharedManager
@@ -140,7 +140,7 @@ class CarDatabaseManager {
             let insert = tblProduct.insert(carName <- car.carModel, carImage <- car.carImage, licensePlate <- car.licensePlate)
             try db!.run(insert)
         }catch {
-            onFailure("Error on add user")
+            onFailure("Error on add car")
         }
     }
     func queryAllCars(onSucces:@escaping(_ cars: [CarItem]) -> (),
@@ -153,7 +153,7 @@ class CarDatabaseManager {
                 onSucces(carsArray)
             }
         }catch {
-            onFailure("Fail on query users")
+            onFailure("Fail on query cars")
         }
     }
     func updateCar(carID: Int64, newCar: CarItem) {
@@ -168,7 +168,7 @@ class CarDatabaseManager {
                 
             }
         }catch {
-            print("error to update user")
+            print("error to update car")
         }
     }
     func deleteCar(carID: Int64) {
@@ -176,7 +176,7 @@ class CarDatabaseManager {
             let tblFilterUser = tblProduct.filter(id == carID)
             try db?.run(tblFilterUser.delete())
         }catch {
-            print("error to delete user")
+            print("error to delete car")
         }
     }
 }
