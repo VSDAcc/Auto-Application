@@ -106,6 +106,18 @@ extension AutoUsersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0
     }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0
+        UIView.animate(withDuration: 0.8, animations:{
+            cell.alpha = 1
+        })
+        let rotationAngle = 90.0 * CGFloat(M_PI / 180)
+        let rotationTransform = CATransform3DMakeRotation(rotationAngle, 0, 0, 1)
+        cell.layer.transform = rotationTransform
+        UIView.animate(withDuration: 0.8, animations:{
+            cell.layer.transform = CATransform3DIdentity
+        })
+    }
 }
 extension UIViewController {
     var contentViewController: UIViewController {

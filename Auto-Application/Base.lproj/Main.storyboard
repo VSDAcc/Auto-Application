@@ -114,15 +114,17 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzN-V3-kf9">
                                                     <rect key="frame" x="8" y="14" width="128" height="128"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="account" translatesAutoresizingMaskIntoConstraints="NO" id="pTb-6o-QHX">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="account" translatesAutoresizingMaskIntoConstraints="NO" id="pTb-6o-QHX">
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="pTb-6o-QHX" firstAttribute="top" secondItem="vzN-V3-kf9" secondAttribute="top" id="1dl-cs-EnP"/>
+                                                        <constraint firstItem="pTb-6o-QHX" firstAttribute="centerY" secondItem="vzN-V3-kf9" secondAttribute="centerY" id="5Hu-0u-8pm"/>
                                                         <constraint firstItem="pTb-6o-QHX" firstAttribute="leading" secondItem="vzN-V3-kf9" secondAttribute="leading" id="65l-JB-8Wj"/>
-                                                        <constraint firstItem="pTb-6o-QHX" firstAttribute="width" relation="lessThanOrEqual" secondItem="vzN-V3-kf9" secondAttribute="height" multiplier="1:1" id="LMr-LL-UKd"/>
+                                                        <constraint firstItem="pTb-6o-QHX" firstAttribute="centerX" secondItem="vzN-V3-kf9" secondAttribute="centerX" id="HRE-py-FPR"/>
+                                                        <constraint firstItem="pTb-6o-QHX" firstAttribute="width" secondItem="vzN-V3-kf9" secondAttribute="height" multiplier="1:1" id="LMr-LL-UKd"/>
                                                         <constraint firstAttribute="trailing" secondItem="pTb-6o-QHX" secondAttribute="trailing" id="W3O-lX-Iou"/>
                                                         <constraint firstAttribute="bottom" secondItem="pTb-6o-QHX" secondAttribute="bottom" id="jjQ-ZX-xDI"/>
                                                     </constraints>
