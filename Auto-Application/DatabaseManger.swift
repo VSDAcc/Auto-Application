@@ -44,7 +44,6 @@ class UserDatabaseManager: UsersDatabaseHandler {
                 table.column(imageName)
                 table.column(adress)
             })
-            print("created table successfully")
         }catch {
             print("unable to create table")
         }
