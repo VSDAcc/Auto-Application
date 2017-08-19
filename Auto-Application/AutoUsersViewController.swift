@@ -29,6 +29,7 @@ class AutoUsersViewController: UIViewController, SaveNewUserHandler, PresenterAl
             tableView.reloadData()
         }
     }
+    //MARK:-Loading
     override func viewDidLoad() {
         super.viewDidLoad()
         usersDatabaseDelegate = UserDatabaseManager.sharedManager
@@ -38,7 +39,7 @@ class AutoUsersViewController: UIViewController, SaveNewUserHandler, PresenterAl
         loadUsersFromDB()
     }
     private func loadUsersFromDB() {
-        usersDatabaseDelegate?.queryAllUsers(onSucces: { [unowned self](usersArray) in
+        usersDatabaseDelegate?.queryAllUsers(onSucces: { [unowned self] (usersArray) in
             self.users = usersArray
             }, onFailure: { (error) in
                 DispatchQueue.main.async {

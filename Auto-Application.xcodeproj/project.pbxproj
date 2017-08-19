@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20091DF21F482C3C0013DBAA /* ShowCarsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20091DF11F482C3C0013DBAA /* ShowCarsTableViewController.swift */; };
+		20091DF51F482FF10013DBAA /* ShowCarsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20091DF31F482FF10013DBAA /* ShowCarsTableViewCell.swift */; };
+		20091DF61F482FF10013DBAA /* ShowCarsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20091DF41F482FF10013DBAA /* ShowCarsTableViewCell.xib */; };
 		200F51BE1F4195D5002EB1EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200F51BD1F4195D5002EB1EC /* AppDelegate.swift */; };
 		200F51C31F4195D5002EB1EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200F51C11F4195D5002EB1EC /* Main.storyboard */; };
 		200F51C51F4195D5002EB1EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 200F51C41F4195D5002EB1EC /* Assets.xcassets */; };
 		200F51C81F4195D5002EB1EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200F51C61F4195D5002EB1EC /* LaunchScreen.storyboard */; };
+		2063FEE11F48802300921104 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2063FEE01F48802300921104 /* ProfileTableViewCell.swift */; };
+		2063FEE31F48802E00921104 /* AddRowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2063FEE21F48802E00921104 /* AddRowTableViewCell.swift */; };
 		206F9E501F419AD000162707 /* DatabaseManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206F9E4F1F419AD000162707 /* DatabaseManger.swift */; };
 		206F9E541F42DD1D00162707 /* AutoUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206F9E531F42DD1D00162707 /* AutoUser.swift */; };
 		206F9E561F42F16F00162707 /* AutoUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206F9E551F42F16F00162707 /* AutoUsersViewController.swift */; };
@@ -26,12 +31,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20091DF11F482C3C0013DBAA /* ShowCarsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCarsTableViewController.swift; sourceTree = "<group>"; };
+		20091DF31F482FF10013DBAA /* ShowCarsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCarsTableViewCell.swift; sourceTree = "<group>"; };
+		20091DF41F482FF10013DBAA /* ShowCarsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowCarsTableViewCell.xib; sourceTree = "<group>"; };
 		200F51BA1F4195D5002EB1EC /* Auto-Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Auto-Application.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		200F51BD1F4195D5002EB1EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		200F51C21F4195D5002EB1EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		200F51C41F4195D5002EB1EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		200F51C71F4195D5002EB1EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		200F51C91F4195D5002EB1EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2063FEE01F48802300921104 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		2063FEE21F48802E00921104 /* AddRowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRowTableViewCell.swift; sourceTree = "<group>"; };
 		206F9E4F1F419AD000162707 /* DatabaseManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManger.swift; sourceTree = "<group>"; };
 		206F9E531F42DD1D00162707 /* AutoUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoUser.swift; sourceTree = "<group>"; };
 		206F9E551F42F16F00162707 /* AutoUsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoUsersViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +143,7 @@
 			children = (
 				206F9E551F42F16F00162707 /* AutoUsersViewController.swift */,
 				206F9E5E1F442F1D00162707 /* NewUserTableViewController.swift */,
+				20091DF11F482C3C0013DBAA /* ShowCarsTableViewController.swift */,
 				206F9E631F444C4C00162707 /* CarsViewController.swift */,
 			);
 			name = Controller;
@@ -153,6 +164,10 @@
 				206F9E591F42F80700162707 /* AutoUsersTableViewCell.xib */,
 				208FDFB91F45991C00F9E298 /* CarTableViewCell.swift */,
 				208FDFBA1F45991C00F9E298 /* CarTableViewCell.xib */,
+				20091DF31F482FF10013DBAA /* ShowCarsTableViewCell.swift */,
+				20091DF41F482FF10013DBAA /* ShowCarsTableViewCell.xib */,
+				2063FEE01F48802300921104 /* ProfileTableViewCell.swift */,
+				2063FEE21F48802E00921104 /* AddRowTableViewCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -246,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				200F51C81F4195D5002EB1EC /* LaunchScreen.storyboard in Resources */,
+				20091DF61F482FF10013DBAA /* ShowCarsTableViewCell.xib in Resources */,
 				206F9E5B1F42F80700162707 /* AutoUsersTableViewCell.xib in Resources */,
 				208FDFBC1F45991C00F9E298 /* CarTableViewCell.xib in Resources */,
 				200F51C51F4195D5002EB1EC /* Assets.xcassets in Resources */,
@@ -314,8 +330,12 @@
 				206F9E641F444C4C00162707 /* CarsViewController.swift in Sources */,
 				208FDFBB1F45991C00F9E298 /* CarTableViewCell.swift in Sources */,
 				206F9E5A1F42F80700162707 /* AutoUsersTableViewCell.swift in Sources */,
+				2063FEE31F48802E00921104 /* AddRowTableViewCell.swift in Sources */,
 				208FDFB81F458F0400F9E298 /* Car.swift in Sources */,
+				20091DF51F482FF10013DBAA /* ShowCarsTableViewCell.swift in Sources */,
 				206F9E561F42F16F00162707 /* AutoUsersViewController.swift in Sources */,
+				2063FEE11F48802300921104 /* ProfileTableViewCell.swift in Sources */,
+				20091DF21F482C3C0013DBAA /* ShowCarsTableViewController.swift in Sources */,
 				206F9E5F1F442F1D00162707 /* NewUserTableViewController.swift in Sources */,
 				206F9E541F42DD1D00162707 /* AutoUser.swift in Sources */,
 			);

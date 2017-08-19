@@ -27,15 +27,30 @@ class CarsViewController: UIViewController, PresenterAlertHandler {
             tableView.reloadData()
         }
     }
+    //MARK:-Loading
     override func viewDidLoad() {
         super.viewDidLoad()
         carsDatabaseDelegate = CarDatabaseManager.sharedManager
-        insertCarsToDatabase()
+        configureNavigationBar()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         loadCarsFromDB()
     }
+    private func configureNavigationBar() {
+        navigationItem.title = "Cars"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCars(_ :)))
+    }
+    func addCars(_ sender: UIBarButtonItem) {
+        for _ in 1...10 {
+            let car = Car(carModel: "BMW", carImage: "car.png", licensePlate: "030043504305", userID: 0)
+            carsDatabaseDelegate?.addCar(car: car, onFailure: { [unowned self](error) in
+                self.presentAlertWith(title: "error", massage: error)
+            })
+        }
+        loadCarsFromDB()
+    }
+    //MARK:-Database
     private func loadCarsFromDB() {
         carsDatabaseDelegate?.queryAllCars(onSucces: { [unowned self](carsArray) in
             self.cars = carsArray
@@ -44,14 +59,6 @@ class CarsViewController: UIViewController, PresenterAlertHandler {
                     self.presentAlertWith(title: "Error", massage: error)
                 }
         })
-    }
-    private func insertCarsToDatabase() {
-        for _ in 1...10 {
-            let car = Car(carModel: "BMW", carImage: "car.png", licensePlate: "030043504305")
-            carsDatabaseDelegate?.addCar(car: car, onFailure: { [unowned self](error) in
-                self.presentAlertWith(title: "error", massage: error)
-            })
-        }
     }
 }
 extension CarsViewController: UITableViewDataSource {
