@@ -44,7 +44,6 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
     }
     weak var profileAccountTableViewCell: ProfileInfoTableViewCell? {
         didSet {
-            profileAccountTableViewCell?.userNameTextField.becomeFirstResponder()
             if user != nil {
                 profileAccountTableViewCell?.avatarImageView.image = UIImage(named: user!.imageString)
                 profileAccountTableViewCell?.userNameTextField.text = user!.name
