@@ -9,10 +9,10 @@
 import Foundation
 import SQLite
 protocol UsersDatabaseHandler: class {
-    func addUser(user: User, onFailure:@escaping(_ error: String) -> ())
+    func addUser(user: User, onFailure:@escaping(_ error: String) -> ()) -> Int64?
     func queryAllUsers(onSucces:@escaping(_ users: [User]) -> (),
                        onFailure:@escaping(_ error: String) -> ())
-    func updateUser(userID: Int64, newUser: User)
+    func updateUser(userID: Int64, newUser: User) -> Bool
     func deleteUser(userID: Int64)
 }
 class UserDatabaseManager: UsersDatabaseHandler {
@@ -48,12 +48,14 @@ class UserDatabaseManager: UsersDatabaseHandler {
             print("unable to create table")
         }
     }
-    func addUser(user: User, onFailure:@escaping(_ error: String) -> ()) {
+    func addUser(user: User, onFailure:@escaping(_ error: String) -> ()) -> Int64? {
         do {
             let insert = tblProduct.insert(name <- user.name, imageName <- user.imageString, adress <- user.adress)
-            try db!.run(insert)
+            let id = try db!.run(insert)
+            return id
         }catch {
            onFailure("Error on add user")
+            return nil
         }
     }
     func queryAllUsers(onSucces:@escaping(_ users: [User]) -> (),
@@ -69,7 +71,7 @@ class UserDatabaseManager: UsersDatabaseHandler {
             onFailure("Fail on query users")
         }
     }
-    func updateUser(userID: Int64, newUser: User) {
+    func updateUser(userID: Int64, newUser: User) -> Bool{
         do {
             let tblFilterUser = tblProduct.filter(id == userID)
             let update = tblFilterUser.update([
@@ -78,11 +80,13 @@ class UserDatabaseManager: UsersDatabaseHandler {
                 adress <- newUser.adress
                 ])
             if try db!.run(update) > 0 {
-                
+                return true
             }
         }catch {
             print("error to update user")
+            return false
         }
+        return false
     }
     func deleteUser(userID: Int64) {
         do {

@@ -6,8 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -101,88 +99,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ProfileTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccountInfo" rowHeight="220" id="rq6-8f-Ajk" customClass="ProfileTableViewCell" customModule="Auto_Application" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="220"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rq6-8f-Ajk" id="Nz5-zE-mPq">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n1I-10-Spn">
-                                            <rect key="frame" x="8" y="14" width="161" height="161"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="account" translatesAutoresizingMaskIntoConstraints="NO" id="Opq-Xf-ek8">
-                                                    <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="Opq-Xf-ek8" secondAttribute="bottom" id="6o3-je-WXA"/>
-                                                <constraint firstItem="Opq-Xf-ek8" firstAttribute="leading" secondItem="n1I-10-Spn" secondAttribute="leading" id="VhA-aF-cc1"/>
-                                                <constraint firstItem="Opq-Xf-ek8" firstAttribute="centerX" secondItem="n1I-10-Spn" secondAttribute="centerX" id="Yrl-rG-POn"/>
-                                                <constraint firstItem="Opq-Xf-ek8" firstAttribute="centerY" secondItem="n1I-10-Spn" secondAttribute="centerY" id="aGe-lM-I15"/>
-                                                <constraint firstAttribute="trailing" secondItem="Opq-Xf-ek8" secondAttribute="trailing" id="aao-fX-6k7"/>
-                                                <constraint firstItem="Opq-Xf-ek8" firstAttribute="width" secondItem="n1I-10-Spn" secondAttribute="height" multiplier="1:1" id="dBx-w2-pP2"/>
-                                                <constraint firstItem="Opq-Xf-ek8" firstAttribute="top" secondItem="n1I-10-Spn" secondAttribute="top" id="lBJ-Sk-wmj"/>
-                                            </constraints>
-                                        </view>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="laK-n8-gX9">
-                                            <rect key="frame" x="184" y="14" width="175" height="118"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UKE-JO-RzR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="175" height="47"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="21"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Adress" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AJU-1C-qUU">
-                                                    <rect key="frame" x="0.0" y="62" width="175" height="56"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="n1I-10-Spn" secondAttribute="bottom" constant="37" id="29e-Sx-Sz6"/>
-                                        <constraint firstItem="laK-n8-gX9" firstAttribute="leading" secondItem="n1I-10-Spn" secondAttribute="trailing" constant="15" id="9t3-Ze-ttU"/>
-                                        <constraint firstItem="n1I-10-Spn" firstAttribute="leading" secondItem="Nz5-zE-mPq" secondAttribute="leadingMargin" id="BQ5-2t-Bt0"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="laK-n8-gX9" secondAttribute="trailing" constant="8" id="O9i-vl-42L"/>
-                                        <constraint firstItem="laK-n8-gX9" firstAttribute="top" secondItem="Nz5-zE-mPq" secondAttribute="topMargin" constant="6" id="Z4T-np-VM5"/>
-                                        <constraint firstItem="n1I-10-Spn" firstAttribute="top" secondItem="Nz5-zE-mPq" secondAttribute="topMargin" constant="6" id="rxq-ad-fNR"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="laK-n8-gX9" secondAttribute="bottom" constant="80" id="tP1-vA-oJX"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="avatarImageView" destination="Opq-Xf-ek8" id="oLr-as-HkN"/>
-                                    <outlet property="userAdressTextField" destination="AJU-1C-qUU" id="wnB-Zh-7ma"/>
-                                    <outlet property="userNameTextField" destination="UKE-JO-RzR" id="loT-v6-hj1"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="AddRowTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShowCarsControllerCell" rowHeight="62" id="Odv-0A-5gv" customClass="AddRowTableViewCell" customModule="Auto_Application" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="248" width="375" height="62"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Odv-0A-5gv" id="kBE-NA-n4q">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Cars" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4UA-ic-htN">
-                                            <rect key="frame" x="8" y="0.0" width="359" height="62"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="tintColor" red="0.88891536800000004" green="0.38407083980000001" blue="0.30184781570000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="28"/>
-                                            <color key="textColor" red="0.88891536800000004" green="0.38407083980000001" blue="0.30184781570000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="addRowLabel" destination="4UA-ic-htN" id="UxU-mR-Vcg"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="uPD-e4-P2U" id="UVb-CI-bjY"/>
@@ -276,7 +192,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="account" width="300" height="312"/>
         <image name="car-Icon" width="24" height="24"/>
         <image name="delivery-man" width="24" height="24"/>
     </resources>

@@ -8,8 +8,8 @@
 
 import UIKit
 protocol SaveNewUserHandler: class {
-    func saveNewUser(newUser: User)
-    func updateUser(userID: Int64, newUser: User)
+    func saveNewUser(newUser: User, userCars: [CarItem])
+    func updateUser(userID: Int64, newUser: User, userCars: [CarItem])
 }
 class NewUserTableViewController: UITableViewController, PresenterAlertHandler, HandleChoocenCarsForUser {
     struct Segues {
@@ -24,29 +24,35 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
         static let addCarRow = 1
     }
     struct CellConstants {
-        static let cellID = "CarCell"
-        static let cellNIB = "CarTableViewCell"
+        static let carCellID = "CarCell"
+        static let carCellNIB = "CarTableViewCell"
         static let accountInfoCell = "AccountInfo"
+        static let accountInfoNIB = "ProfileInfoTableViewCell"
         static let showCarsControllerCell = "ShowCarsControllerCell"
+        static let showCarsControllerNIB = "AddUserCarsRowTableViewCell"
+        
     }
     private func registerCarCellToTableview() {
-        let cellNib = UINib(nibName: CellConstants.cellNIB, bundle: nil)
-        tableView.register(cellNib, forCellReuseIdentifier: CellConstants.cellID)
+        let carCellNib = UINib(nibName: CellConstants.carCellNIB, bundle: nil)
+        let accountCellNib = UINib(nibName: CellConstants.accountInfoNIB, bundle: nil)
+        let showCarsCellNib = UINib(nibName: CellConstants.showCarsControllerNIB, bundle: nil)
+        tableView.register(carCellNib, forCellReuseIdentifier: CellConstants.carCellID)
+        tableView.register(accountCellNib, forCellReuseIdentifier: CellConstants.accountInfoCell)
+        tableView.register(showCarsCellNib, forCellReuseIdentifier: CellConstants.showCarsControllerCell)
         tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableViewAutomaticDimension
     }
-    weak var profileAccountTableViewCell: ProfileTableViewCell? {
+    weak var profileAccountTableViewCell: ProfileInfoTableViewCell? {
         didSet {
+            profileAccountTableViewCell?.userNameTextField.becomeFirstResponder()
             if user != nil {
                 profileAccountTableViewCell?.avatarImageView.image = UIImage(named: user!.imageString)
                 profileAccountTableViewCell?.userNameTextField.text = user!.name
-                profileAccountTableViewCell?.userNameTextField.delegate = self
                 profileAccountTableViewCell?.userAdressTextField.text = user!.adress
-                profileAccountTableViewCell?.userAdressTextField.delegate = self
             }
         }
     }
-    weak var showCarsTableViewCell: AddRowTableViewCell?
+    weak var showCarsTableViewCell: AddUserCarsRowTableViewCell?
     weak var delegate: SaveNewUserHandler?
     weak var carsDatabaseDelegate: CarsDatabaseHandler?
     var user: User?
@@ -71,24 +77,16 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
     func saveChoocenCars(cars: [CarItem]) {
         userCars = cars
     }
-    private func updateUsersCarsToDB(userID: Int64) {
-        for car in userCars {
-            let newCar = Car(carModel: car.carModel, carImage: car.carImage, licensePlate: car.licensePlate, userID: userID)
-            carsDatabaseDelegate?.updateCar(carID: car.carID, newCar:newCar)
-        }
-    }
     //MARK:-Database
     func saveNewUser(_ sender: UIBarButtonItem) {
         if !profileAccountTableViewCell!.userNameTextField.text!.isEmpty && !profileAccountTableViewCell!.userAdressTextField.text!.isEmpty {
             _ = self.navigationController?.popViewController(animated: true)
             if user != nil {
                 let newUser = AutoUser(name: profileAccountTableViewCell!.userNameTextField.text!, userID: user!.userID, imageString: "driver.png", adress: profileAccountTableViewCell!.userAdressTextField.text!)
-                delegate?.updateUser(userID: user!.userID, newUser: newUser)
-                updateUsersCarsToDB(userID: newUser.userID)
+                delegate?.updateUser(userID: user!.userID, newUser: newUser, userCars: userCars)
             }else {
                 let newUser = AutoUser(name: profileAccountTableViewCell!.userNameTextField.text!, imageString: "driver.jpeg", adress: profileAccountTableViewCell!.userAdressTextField.text!)
-                delegate?.saveNewUser(newUser: newUser)
-                updateUsersCarsToDB(userID: newUser.userID)
+                delegate?.saveNewUser(newUser: newUser, userCars: userCars)
             }
         }else {
             DispatchQueue.main.async {
@@ -132,15 +130,17 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == Sections.usersCarsSection {
-        let cell: CarTableViewCell = tableView.dequeueReusableCell(withIdentifier: CellConstants.cellID, for: indexPath) as! CarTableViewCell
+        let cell: CarTableViewCell = tableView.dequeueReusableCell(withIdentifier: CellConstants.carCellID, for: indexPath) as! CarTableViewCell
         let car = self.userCars[indexPath.row]
         cell.car = car
             return cell
         }else if indexPath.section == Sections.profileSection && indexPath.row == ProfileRow.accountRow {
-            profileAccountTableViewCell = tableView.dequeueReusableCell(withIdentifier: CellConstants.accountInfoCell, for: indexPath) as? ProfileTableViewCell
+            profileAccountTableViewCell = tableView.dequeueReusableCell(withIdentifier: CellConstants.accountInfoCell, for: indexPath) as? ProfileInfoTableViewCell
+            profileAccountTableViewCell?.userNameTextField.delegate = self
+            profileAccountTableViewCell?.userAdressTextField.delegate = self
             return profileAccountTableViewCell!
         }else {
-            showCarsTableViewCell = tableView.dequeueReusableCell(withIdentifier: CellConstants.showCarsControllerCell, for: indexPath) as? AddRowTableViewCell
+            showCarsTableViewCell = tableView.dequeueReusableCell(withIdentifier: CellConstants.showCarsControllerCell, for: indexPath) as? AddUserCarsRowTableViewCell
             return showCarsTableViewCell!
         }
     }
@@ -160,10 +160,30 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
             return 100.0
         }
     }
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == Sections.usersCarsSection {
+            return true
+        }else {
+            return false
+        }
+    }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if indexPath.section == Sections.usersCarsSection {
+        let car = self.userCars[indexPath.row]
+        tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.userCars.remove(at: indexPath.row)
+        tableView.endUpdates()
+            if user != nil {
+                let newCar = Car(carModel: car.carModel, carImage: car.carImage, carID: car.carID, licensePlate: car.licensePlate, userID: 0)
+                carsDatabaseDelegate?.updateCar(carID: car.carID, newCar: newCar)
+            }
+        }
+    }
 }
 extension NewUserTableViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if !(profileAccountTableViewCell!.userNameTextField.text?.isEmpty)! && profileAccountTableViewCell!.userNameTextField.isFirstResponder {
+        if  profileAccountTableViewCell!.userNameTextField.isFirstResponder {
             profileAccountTableViewCell!.userAdressTextField.becomeFirstResponder()
         }else if profileAccountTableViewCell!.userAdressTextField.isFirstResponder {
             profileAccountTableViewCell!.userAdressTextField.resignFirstResponder()

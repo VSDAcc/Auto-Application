@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 class AutoUsersViewController: UIViewController, SaveNewUserHandler, PresenterAlertHandler {
     struct CellConstants {
         static let cellID = "AutoUserCell"
@@ -24,6 +25,7 @@ class AutoUsersViewController: UIViewController, SaveNewUserHandler, PresenterAl
         }
     }
     weak var usersDatabaseDelegate: UsersDatabaseHandler?
+    weak var carsDatabaseDelegate: CarsDatabaseHandler?
     var users = [User]() {
         didSet {
             tableView.reloadData()
@@ -33,6 +35,7 @@ class AutoUsersViewController: UIViewController, SaveNewUserHandler, PresenterAl
     override func viewDidLoad() {
         super.viewDidLoad()
         usersDatabaseDelegate = UserDatabaseManager.sharedManager
+        carsDatabaseDelegate = CarDatabaseManager.sharedManager
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -47,16 +50,26 @@ class AutoUsersViewController: UIViewController, SaveNewUserHandler, PresenterAl
                 }
         })
     }
-    //MARK:-SaveNewUserHandler 
-    func saveNewUser(newUser: User) {
-        usersDatabaseDelegate?.addUser(user: newUser, onFailure: { [unowned self] (error) in
+    //MARK:-SaveNewUserHandler
+    private func updateUsersCarsToDB(userCars: [CarItem], userID: Int64) {
+        for car in userCars {
+            let newCar = Car(carModel: car.carModel, carImage: car.carImage, licensePlate: car.licensePlate, userID: userID)
+            carsDatabaseDelegate?.updateCar(carID: car.carID, newCar:newCar)
+        }
+    }
+    func saveNewUser(newUser: User, userCars: [CarItem]) {
+       if let newUserID = usersDatabaseDelegate?.addUser(user: newUser, onFailure: { [unowned self] (error) in
             DispatchQueue.main.async {
                 self.presentAlertWith(title: "Error", massage: error)
             }
-        })
+       }) {
+        updateUsersCarsToDB(userCars: userCars, userID: newUserID)
+        }
     }
-    func updateUser(userID: Int64, newUser: User) {
-        usersDatabaseDelegate?.updateUser(userID: userID, newUser: newUser)
+    func updateUser(userID: Int64, newUser: User, userCars: [CarItem]) {
+        if usersDatabaseDelegate!.updateUser(userID: userID, newUser: newUser) {
+            updateUsersCarsToDB(userCars: userCars, userID: userID)
+        }
     }
     //MARK:-Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
