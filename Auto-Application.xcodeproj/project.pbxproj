@@ -95,11 +95,11 @@
 		200F51BC1F4195D5002EB1EC /* Auto-Application */ = {
 			isa = PBXGroup;
 			children = (
-				206F9E601F4446C700162707 /* Helped Methods */,
 				206F9E4D1F41998400162707 /* SQLDatabase */,
-				206F9E4C1F41997B00162707 /* Controller */,
+				206F9E4A1F41995E00162707 /* Storyboards */,
+				20DC54A31F5023DE0061BAD9 /* Modules */,
+				206F9E601F4446C700162707 /* Helped Methods */,
 				206F9E4B1F41997500162707 /* Model */,
-				206F9E491F41995900162707 /* View */,
 				206F9E481F41994900162707 /* Supporting Files */,
 			);
 			path = "Auto-Application";
@@ -114,15 +114,6 @@
 				200F51C91F4195D5002EB1EC /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		206F9E491F41995900162707 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				206F9E571F42F7E800162707 /* Cell */,
-				206F9E4A1F41995E00162707 /* Storyboards */,
-			);
-			name = View;
 			sourceTree = "<group>";
 		};
 		206F9E4A1F41995E00162707 /* Storyboards */ = {
@@ -142,17 +133,6 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		206F9E4C1F41997B00162707 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				206F9E551F42F16F00162707 /* AutoUsersViewController.swift */,
-				206F9E5E1F442F1D00162707 /* NewUserTableViewController.swift */,
-				20091DF11F482C3C0013DBAA /* ShowCarsTableViewController.swift */,
-				206F9E631F444C4C00162707 /* CarsViewController.swift */,
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
 		206F9E4D1F41998400162707 /* SQLDatabase */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,29 +141,225 @@
 			name = SQLDatabase;
 			sourceTree = "<group>";
 		};
-		206F9E571F42F7E800162707 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				206F9E581F42F80700162707 /* AutoUsersTableViewCell.swift */,
-				206F9E591F42F80700162707 /* AutoUsersTableViewCell.xib */,
-				208FDFB91F45991C00F9E298 /* CarTableViewCell.swift */,
-				208FDFBA1F45991C00F9E298 /* CarTableViewCell.xib */,
-				20091DF31F482FF10013DBAA /* ShowCarsTableViewCell.swift */,
-				20091DF41F482FF10013DBAA /* ShowCarsTableViewCell.xib */,
-				2063FEE41F49897B00921104 /* ProfileInfoTableViewCell.swift */,
-				2063FEE51F49897B00921104 /* ProfileInfoTableViewCell.xib */,
-				2063FEE81F49899700921104 /* AddUserCarsRowTableViewCell.swift */,
-				2063FEE91F49899700921104 /* AddUserCarsRowTableViewCell.xib */,
-			);
-			name = Cell;
-			sourceTree = "<group>";
-		};
 		206F9E601F4446C700162707 /* Helped Methods */ = {
 			isa = PBXGroup;
 			children = (
 				206F9E611F4446F400162707 /* AlertMethods.swift */,
 			);
 			name = "Helped Methods";
+			sourceTree = "<group>";
+		};
+		20DC54A31F5023DE0061BAD9 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				20DC54A71F50242A0061BAD9 /* Cars Module */,
+				20DC54A61F50240B0061BAD9 /* ShowCarsModule */,
+				20DC54A51F5023FC0061BAD9 /* NewUserModule */,
+				20DC54A41F5023E60061BAD9 /* AutoUsersModule */,
+			);
+			name = Modules;
+			sourceTree = "<group>";
+		};
+		20DC54A41F5023E60061BAD9 /* AutoUsersModule */ = {
+			isa = PBXGroup;
+			children = (
+				20DC54AD1F50253E0061BAD9 /* AutoUser View */,
+				20DC54AE1F50254C0061BAD9 /* AutoUser Presenter */,
+				20DC54AF1F5025670061BAD9 /* AutoUser Interactor */,
+				20DC54B01F50256E0061BAD9 /* AutoUser Assembly */,
+			);
+			name = AutoUsersModule;
+			sourceTree = "<group>";
+		};
+		20DC54A51F5023FC0061BAD9 /* NewUserModule */ = {
+			isa = PBXGroup;
+			children = (
+				20DC54B21F5025C30061BAD9 /* NewUser View */,
+				20DC54B31F5025D00061BAD9 /* NewUser Presenter */,
+				20DC54B41F5025D80061BAD9 /* NewUser Interactor */,
+				20DC54B51F5025F10061BAD9 /* NewUser Assembly */,
+			);
+			name = NewUserModule;
+			sourceTree = "<group>";
+		};
+		20DC54A61F50240B0061BAD9 /* ShowCarsModule */ = {
+			isa = PBXGroup;
+			children = (
+				20DC54B71F50264B0061BAD9 /* ShowCars View */,
+				20DC54B81F5026560061BAD9 /* ShowCars Presenter */,
+				20DC54B91F5026650061BAD9 /* ShowCars Interactor */,
+				20DC54BA1F50266D0061BAD9 /* ShowCars Assembly */,
+			);
+			name = ShowCarsModule;
+			sourceTree = "<group>";
+		};
+		20DC54A71F50242A0061BAD9 /* Cars Module */ = {
+			isa = PBXGroup;
+			children = (
+				20DC54A81F50243A0061BAD9 /* CarsView */,
+				20DC54AB1F5024F80061BAD9 /* Cars Presenter */,
+				20DC54AA1F5024640061BAD9 /* Cars Interactor */,
+				20DC54AC1F5024FF0061BAD9 /* Cars Assembly */,
+			);
+			name = "Cars Module";
+			sourceTree = "<group>";
+		};
+		20DC54A81F50243A0061BAD9 /* CarsView */ = {
+			isa = PBXGroup;
+			children = (
+				206F9E631F444C4C00162707 /* CarsViewController.swift */,
+				20DC54A91F5024440061BAD9 /* Cars Cell */,
+			);
+			name = CarsView;
+			sourceTree = "<group>";
+		};
+		20DC54A91F5024440061BAD9 /* Cars Cell */ = {
+			isa = PBXGroup;
+			children = (
+				208FDFB91F45991C00F9E298 /* CarTableViewCell.swift */,
+				208FDFBA1F45991C00F9E298 /* CarTableViewCell.xib */,
+			);
+			name = "Cars Cell";
+			sourceTree = "<group>";
+		};
+		20DC54AA1F5024640061BAD9 /* Cars Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Cars Interactor";
+			sourceTree = "<group>";
+		};
+		20DC54AB1F5024F80061BAD9 /* Cars Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Cars Presenter";
+			sourceTree = "<group>";
+		};
+		20DC54AC1F5024FF0061BAD9 /* Cars Assembly */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Cars Assembly";
+			sourceTree = "<group>";
+		};
+		20DC54AD1F50253E0061BAD9 /* AutoUser View */ = {
+			isa = PBXGroup;
+			children = (
+				206F9E551F42F16F00162707 /* AutoUsersViewController.swift */,
+				20DC54B11F50257D0061BAD9 /* AutoUser Cell */,
+			);
+			name = "AutoUser View";
+			sourceTree = "<group>";
+		};
+		20DC54AE1F50254C0061BAD9 /* AutoUser Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "AutoUser Presenter";
+			sourceTree = "<group>";
+		};
+		20DC54AF1F5025670061BAD9 /* AutoUser Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "AutoUser Interactor";
+			sourceTree = "<group>";
+		};
+		20DC54B01F50256E0061BAD9 /* AutoUser Assembly */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "AutoUser Assembly";
+			sourceTree = "<group>";
+		};
+		20DC54B11F50257D0061BAD9 /* AutoUser Cell */ = {
+			isa = PBXGroup;
+			children = (
+				206F9E581F42F80700162707 /* AutoUsersTableViewCell.swift */,
+				206F9E591F42F80700162707 /* AutoUsersTableViewCell.xib */,
+			);
+			name = "AutoUser Cell";
+			sourceTree = "<group>";
+		};
+		20DC54B21F5025C30061BAD9 /* NewUser View */ = {
+			isa = PBXGroup;
+			children = (
+				206F9E5E1F442F1D00162707 /* NewUserTableViewController.swift */,
+				20DC54B61F5025FB0061BAD9 /* NewUser Cell */,
+			);
+			name = "NewUser View";
+			sourceTree = "<group>";
+		};
+		20DC54B31F5025D00061BAD9 /* NewUser Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "NewUser Presenter";
+			sourceTree = "<group>";
+		};
+		20DC54B41F5025D80061BAD9 /* NewUser Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "NewUser Interactor";
+			sourceTree = "<group>";
+		};
+		20DC54B51F5025F10061BAD9 /* NewUser Assembly */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "NewUser Assembly";
+			sourceTree = "<group>";
+		};
+		20DC54B61F5025FB0061BAD9 /* NewUser Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2063FEE41F49897B00921104 /* ProfileInfoTableViewCell.swift */,
+				2063FEE51F49897B00921104 /* ProfileInfoTableViewCell.xib */,
+				2063FEE81F49899700921104 /* AddUserCarsRowTableViewCell.swift */,
+				2063FEE91F49899700921104 /* AddUserCarsRowTableViewCell.xib */,
+			);
+			name = "NewUser Cell";
+			sourceTree = "<group>";
+		};
+		20DC54B71F50264B0061BAD9 /* ShowCars View */ = {
+			isa = PBXGroup;
+			children = (
+				20091DF11F482C3C0013DBAA /* ShowCarsTableViewController.swift */,
+				20DC54BB1F5026750061BAD9 /* ShowCars Cell */,
+			);
+			name = "ShowCars View";
+			sourceTree = "<group>";
+		};
+		20DC54B81F5026560061BAD9 /* ShowCars Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "ShowCars Presenter";
+			sourceTree = "<group>";
+		};
+		20DC54B91F5026650061BAD9 /* ShowCars Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "ShowCars Interactor";
+			sourceTree = "<group>";
+		};
+		20DC54BA1F50266D0061BAD9 /* ShowCars Assembly */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "ShowCars Assembly";
+			sourceTree = "<group>";
+		};
+		20DC54BB1F5026750061BAD9 /* ShowCars Cell */ = {
+			isa = PBXGroup;
+			children = (
+				20091DF31F482FF10013DBAA /* ShowCarsTableViewCell.swift */,
+				20091DF41F482FF10013DBAA /* ShowCarsTableViewCell.xib */,
+			);
+			name = "ShowCars Cell";
 			sourceTree = "<group>";
 		};
 		EB8A3FC150315A9D40482BF3 /* Pods */ = {
