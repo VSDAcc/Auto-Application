@@ -30,7 +30,6 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
         static let accountInfoNIB = "ProfileInfoTableViewCell"
         static let showCarsControllerCell = "ShowCarsControllerCell"
         static let showCarsControllerNIB = "AddUserCarsRowTableViewCell"
-        
     }
     private func registerCarCellToTableview() {
         let carCellNib = UINib(nibName: CellConstants.carCellNIB, bundle: nil)

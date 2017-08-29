@@ -29,6 +29,14 @@
 		208FDFB81F458F0400F9E298 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208FDFB71F458F0400F9E298 /* Car.swift */; };
 		208FDFBB1F45991C00F9E298 /* CarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208FDFB91F45991C00F9E298 /* CarTableViewCell.swift */; };
 		208FDFBC1F45991C00F9E298 /* CarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 208FDFBA1F45991C00F9E298 /* CarTableViewCell.xib */; };
+		20D128E81F540E130028D7ED /* AutoUserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D128E71F540E130028D7ED /* AutoUserPresenter.swift */; };
+		20D128EA1F540E2B0028D7ED /* AutoUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D128E91F540E2B0028D7ED /* AutoUserInteractor.swift */; };
+		20D128EC1F540E380028D7ED /* AutoUserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D128EB1F540E380028D7ED /* AutoUserRouter.swift */; };
+		20D128EE1F540E930028D7ED /* AutoUserAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D128ED1F540E930028D7ED /* AutoUserAssembly.swift */; };
+		20D128F01F5570F70028D7ED /* NewUserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D128EF1F5570F70028D7ED /* NewUserPresenter.swift */; };
+		20D128F21F55710F0028D7ED /* NewUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D128F11F55710F0028D7ED /* NewUserInteractor.swift */; };
+		20D128F41F55711E0028D7ED /* NewUserAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D128F31F55711E0028D7ED /* NewUserAssembly.swift */; };
+		20D128F61F5571310028D7ED /* NewUserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D128F51F5571310028D7ED /* NewUserRouter.swift */; };
 		56557DB54887ED80DD5B51A1 /* Pods_Auto_Application.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C70C7BE87D700C7597E62D5E /* Pods_Auto_Application.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +65,14 @@
 		208FDFB71F458F0400F9E298 /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		208FDFB91F45991C00F9E298 /* CarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTableViewCell.swift; sourceTree = "<group>"; };
 		208FDFBA1F45991C00F9E298 /* CarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarTableViewCell.xib; sourceTree = "<group>"; };
+		20D128E71F540E130028D7ED /* AutoUserPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoUserPresenter.swift; sourceTree = "<group>"; };
+		20D128E91F540E2B0028D7ED /* AutoUserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoUserInteractor.swift; sourceTree = "<group>"; };
+		20D128EB1F540E380028D7ED /* AutoUserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoUserRouter.swift; sourceTree = "<group>"; };
+		20D128ED1F540E930028D7ED /* AutoUserAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoUserAssembly.swift; sourceTree = "<group>"; };
+		20D128EF1F5570F70028D7ED /* NewUserPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserPresenter.swift; sourceTree = "<group>"; };
+		20D128F11F55710F0028D7ED /* NewUserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserInteractor.swift; sourceTree = "<group>"; };
+		20D128F31F55711E0028D7ED /* NewUserAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserAssembly.swift; sourceTree = "<group>"; };
+		20D128F51F5571310028D7ED /* NewUserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserRouter.swift; sourceTree = "<group>"; };
 		24517120976C4F32B2575F56 /* Pods-Auto-Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Auto-Application.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Auto-Application/Pods-Auto-Application.debug.xcconfig"; sourceTree = "<group>"; };
 		B6A3F4B336F3B47FF267F2F0 /* Pods-Auto-Application.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Auto-Application.release.xcconfig"; path = "Pods/Target Support Files/Pods-Auto-Application/Pods-Auto-Application.release.xcconfig"; sourceTree = "<group>"; };
 		C70C7BE87D700C7597E62D5E /* Pods_Auto_Application.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Auto_Application.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,65 +168,56 @@
 		20DC54A31F5023DE0061BAD9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				20DC54A41F5023E60061BAD9 /* AutoUsers Module */,
+				20DC54A51F5023FC0061BAD9 /* NewUser Module */,
+				20DC54A61F50240B0061BAD9 /* ShowCars Module */,
 				20DC54A71F50242A0061BAD9 /* Cars Module */,
-				20DC54A61F50240B0061BAD9 /* ShowCarsModule */,
-				20DC54A51F5023FC0061BAD9 /* NewUserModule */,
-				20DC54A41F5023E60061BAD9 /* AutoUsersModule */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
 		};
-		20DC54A41F5023E60061BAD9 /* AutoUsersModule */ = {
+		20DC54A41F5023E60061BAD9 /* AutoUsers Module */ = {
 			isa = PBXGroup;
 			children = (
-				20DC54AD1F50253E0061BAD9 /* AutoUser View */,
-				20DC54AE1F50254C0061BAD9 /* AutoUser Presenter */,
-				20DC54AF1F5025670061BAD9 /* AutoUser Interactor */,
-				20DC54B01F50256E0061BAD9 /* AutoUser Assembly */,
+				206F9E551F42F16F00162707 /* AutoUsersViewController.swift */,
+				20D128E71F540E130028D7ED /* AutoUserPresenter.swift */,
+				20D128E91F540E2B0028D7ED /* AutoUserInteractor.swift */,
+				20D128EB1F540E380028D7ED /* AutoUserRouter.swift */,
+				20D128ED1F540E930028D7ED /* AutoUserAssembly.swift */,
+				20DC54B11F50257D0061BAD9 /* AutoUser Cell */,
 			);
-			name = AutoUsersModule;
+			name = "AutoUsers Module";
 			sourceTree = "<group>";
 		};
-		20DC54A51F5023FC0061BAD9 /* NewUserModule */ = {
+		20DC54A51F5023FC0061BAD9 /* NewUser Module */ = {
 			isa = PBXGroup;
 			children = (
-				20DC54B21F5025C30061BAD9 /* NewUser View */,
-				20DC54B31F5025D00061BAD9 /* NewUser Presenter */,
-				20DC54B41F5025D80061BAD9 /* NewUser Interactor */,
-				20DC54B51F5025F10061BAD9 /* NewUser Assembly */,
+				206F9E5E1F442F1D00162707 /* NewUserTableViewController.swift */,
+				20D128EF1F5570F70028D7ED /* NewUserPresenter.swift */,
+				20D128F11F55710F0028D7ED /* NewUserInteractor.swift */,
+				20D128F31F55711E0028D7ED /* NewUserAssembly.swift */,
+				20D128F51F5571310028D7ED /* NewUserRouter.swift */,
+				20DC54B61F5025FB0061BAD9 /* NewUser Cell */,
 			);
-			name = NewUserModule;
+			name = "NewUser Module";
 			sourceTree = "<group>";
 		};
-		20DC54A61F50240B0061BAD9 /* ShowCarsModule */ = {
+		20DC54A61F50240B0061BAD9 /* ShowCars Module */ = {
 			isa = PBXGroup;
 			children = (
-				20DC54B71F50264B0061BAD9 /* ShowCars View */,
-				20DC54B81F5026560061BAD9 /* ShowCars Presenter */,
-				20DC54B91F5026650061BAD9 /* ShowCars Interactor */,
-				20DC54BA1F50266D0061BAD9 /* ShowCars Assembly */,
+				20091DF11F482C3C0013DBAA /* ShowCarsTableViewController.swift */,
+				20DC54BB1F5026750061BAD9 /* ShowCars Cell */,
 			);
-			name = ShowCarsModule;
+			name = "ShowCars Module";
 			sourceTree = "<group>";
 		};
 		20DC54A71F50242A0061BAD9 /* Cars Module */ = {
 			isa = PBXGroup;
 			children = (
-				20DC54A81F50243A0061BAD9 /* CarsView */,
-				20DC54AB1F5024F80061BAD9 /* Cars Presenter */,
-				20DC54AA1F5024640061BAD9 /* Cars Interactor */,
-				20DC54AC1F5024FF0061BAD9 /* Cars Assembly */,
-			);
-			name = "Cars Module";
-			sourceTree = "<group>";
-		};
-		20DC54A81F50243A0061BAD9 /* CarsView */ = {
-			isa = PBXGroup;
-			children = (
 				206F9E631F444C4C00162707 /* CarsViewController.swift */,
 				20DC54A91F5024440061BAD9 /* Cars Cell */,
 			);
-			name = CarsView;
+			name = "Cars Module";
 			sourceTree = "<group>";
 		};
 		20DC54A91F5024440061BAD9 /* Cars Cell */ = {
@@ -222,57 +229,6 @@
 			name = "Cars Cell";
 			sourceTree = "<group>";
 		};
-		20DC54AA1F5024640061BAD9 /* Cars Interactor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Cars Interactor";
-			sourceTree = "<group>";
-		};
-		20DC54AB1F5024F80061BAD9 /* Cars Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Cars Presenter";
-			sourceTree = "<group>";
-		};
-		20DC54AC1F5024FF0061BAD9 /* Cars Assembly */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Cars Assembly";
-			sourceTree = "<group>";
-		};
-		20DC54AD1F50253E0061BAD9 /* AutoUser View */ = {
-			isa = PBXGroup;
-			children = (
-				206F9E551F42F16F00162707 /* AutoUsersViewController.swift */,
-				20DC54B11F50257D0061BAD9 /* AutoUser Cell */,
-			);
-			name = "AutoUser View";
-			sourceTree = "<group>";
-		};
-		20DC54AE1F50254C0061BAD9 /* AutoUser Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "AutoUser Presenter";
-			sourceTree = "<group>";
-		};
-		20DC54AF1F5025670061BAD9 /* AutoUser Interactor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "AutoUser Interactor";
-			sourceTree = "<group>";
-		};
-		20DC54B01F50256E0061BAD9 /* AutoUser Assembly */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "AutoUser Assembly";
-			sourceTree = "<group>";
-		};
 		20DC54B11F50257D0061BAD9 /* AutoUser Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,36 +236,6 @@
 				206F9E591F42F80700162707 /* AutoUsersTableViewCell.xib */,
 			);
 			name = "AutoUser Cell";
-			sourceTree = "<group>";
-		};
-		20DC54B21F5025C30061BAD9 /* NewUser View */ = {
-			isa = PBXGroup;
-			children = (
-				206F9E5E1F442F1D00162707 /* NewUserTableViewController.swift */,
-				20DC54B61F5025FB0061BAD9 /* NewUser Cell */,
-			);
-			name = "NewUser View";
-			sourceTree = "<group>";
-		};
-		20DC54B31F5025D00061BAD9 /* NewUser Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "NewUser Presenter";
-			sourceTree = "<group>";
-		};
-		20DC54B41F5025D80061BAD9 /* NewUser Interactor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "NewUser Interactor";
-			sourceTree = "<group>";
-		};
-		20DC54B51F5025F10061BAD9 /* NewUser Assembly */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "NewUser Assembly";
 			sourceTree = "<group>";
 		};
 		20DC54B61F5025FB0061BAD9 /* NewUser Cell */ = {
@@ -321,36 +247,6 @@
 				2063FEE91F49899700921104 /* AddUserCarsRowTableViewCell.xib */,
 			);
 			name = "NewUser Cell";
-			sourceTree = "<group>";
-		};
-		20DC54B71F50264B0061BAD9 /* ShowCars View */ = {
-			isa = PBXGroup;
-			children = (
-				20091DF11F482C3C0013DBAA /* ShowCarsTableViewController.swift */,
-				20DC54BB1F5026750061BAD9 /* ShowCars Cell */,
-			);
-			name = "ShowCars View";
-			sourceTree = "<group>";
-		};
-		20DC54B81F5026560061BAD9 /* ShowCars Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "ShowCars Presenter";
-			sourceTree = "<group>";
-		};
-		20DC54B91F5026650061BAD9 /* ShowCars Interactor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "ShowCars Interactor";
-			sourceTree = "<group>";
-		};
-		20DC54BA1F50266D0061BAD9 /* ShowCars Assembly */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "ShowCars Assembly";
 			sourceTree = "<group>";
 		};
 		20DC54BB1F5026750061BAD9 /* ShowCars Cell */ = {
@@ -510,18 +406,26 @@
 			files = (
 				206F9E501F419AD000162707 /* DatabaseManger.swift in Sources */,
 				200F51BE1F4195D5002EB1EC /* AppDelegate.swift in Sources */,
+				20D128F61F5571310028D7ED /* NewUserRouter.swift in Sources */,
+				20D128F21F55710F0028D7ED /* NewUserInteractor.swift in Sources */,
 				206F9E621F4446F400162707 /* AlertMethods.swift in Sources */,
+				20D128EC1F540E380028D7ED /* AutoUserRouter.swift in Sources */,
 				206F9E641F444C4C00162707 /* CarsViewController.swift in Sources */,
 				208FDFBB1F45991C00F9E298 /* CarTableViewCell.swift in Sources */,
 				206F9E5A1F42F80700162707 /* AutoUsersTableViewCell.swift in Sources */,
+				20D128EA1F540E2B0028D7ED /* AutoUserInteractor.swift in Sources */,
 				208FDFB81F458F0400F9E298 /* Car.swift in Sources */,
 				2063FEEA1F49899700921104 /* AddUserCarsRowTableViewCell.swift in Sources */,
+				20D128F01F5570F70028D7ED /* NewUserPresenter.swift in Sources */,
 				20091DF51F482FF10013DBAA /* ShowCarsTableViewCell.swift in Sources */,
+				20D128EE1F540E930028D7ED /* AutoUserAssembly.swift in Sources */,
+				20D128F41F55711E0028D7ED /* NewUserAssembly.swift in Sources */,
 				2063FEE61F49897B00921104 /* ProfileInfoTableViewCell.swift in Sources */,
 				206F9E561F42F16F00162707 /* AutoUsersViewController.swift in Sources */,
 				20091DF21F482C3C0013DBAA /* ShowCarsTableViewController.swift in Sources */,
 				206F9E5F1F442F1D00162707 /* NewUserTableViewController.swift in Sources */,
 				206F9E541F42DD1D00162707 /* AutoUser.swift in Sources */,
+				20D128E81F540E130028D7ED /* AutoUserPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

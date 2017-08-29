@@ -7,14 +7,20 @@
 //
 
 import UIKit
-
-class AutoUsersViewController: UIViewController, SaveNewUserHandler, PresenterAlertHandler {
+protocol AutoUserViewControllerInput: class {
+    func fetchAllUsersFromDatabase(usersArray: [User])
+    func handleErrorFromFetchingUsersFromDatabase(error: String)
+}
+protocol AutoUserViewControllerOutput: class {
+    func queryAllUsersFromDatabase()
+    func deleteUserFromDatabase(userID:Int64)
+    func sendUserToNewUserVC(_ segue: UIStoryboardSegue, sender: Any?)
+    func perfomSegueToNewUserVC(sender: Any?)
+}
+class AutoUsersViewController: UIViewController, SaveNewUserHandler, PresenterAlertHandler, AutoUserViewControllerInput {
     struct CellConstants {
         static let cellID = "AutoUserCell"
         static let cellNIB = "AutoUsersTableViewCell"
-    }
-    struct Segues {
-        static let newUserSegue = "newUserSegue"
     }
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -24,8 +30,8 @@ class AutoUsersViewController: UIViewController, SaveNewUserHandler, PresenterAl
             tableView.rowHeight = UITableViewAutomaticDimension
         }
     }
-    weak var usersDatabaseDelegate: UsersDatabaseHandler?
     weak var carsDatabaseDelegate: CarsDatabaseHandler?
+    var presenter: AutoUserPresenterInput?
     var users = [User]() {
         didSet {
             tableView.reloadData()
@@ -34,21 +40,23 @@ class AutoUsersViewController: UIViewController, SaveNewUserHandler, PresenterAl
     //MARK:-Loading
     override func viewDidLoad() {
         super.viewDidLoad()
-        usersDatabaseDelegate = UserDatabaseManager.sharedManager
         carsDatabaseDelegate = CarDatabaseManager.sharedManager
+        AutoUserAssembly.sharedInstance.buildAutoUserModule(self)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        loadUsersFromDB()
+        presenter?.queryAllUsersFromDatabase()
     }
-    private func loadUsersFromDB() {
-        usersDatabaseDelegate?.queryAllUsers(onSucces: { [unowned self] (usersArray) in
-            self.users = usersArray
-            }, onFailure: { (error) in
-                DispatchQueue.main.async {
-                    self.presentAlertWith(title: "Error", massage: error)
-                }
-        })
+    //MARK:-AutoUserViewControllerInput
+    func fetchAllUsersFromDatabase(usersArray: [User]) {
+        DispatchQueue.main.async {
+            self.users.append(contentsOf: usersArray)
+        }
+    }
+    func handleErrorFromFetchingUsersFromDatabase(error: String) {
+        DispatchQueue.main.async {
+            self.presentAlertWith(title: "Error", massage: error)
+        }
     }
     //MARK:-SaveNewUserHandler
     private func updateUsersCarsToDB(userCars: [CarItem], userID: Int64) {
@@ -58,29 +66,22 @@ class AutoUsersViewController: UIViewController, SaveNewUserHandler, PresenterAl
         }
     }
     func saveNewUser(newUser: User, userCars: [CarItem]) {
-       if let newUserID = usersDatabaseDelegate?.addUser(user: newUser, onFailure: { [unowned self] (error) in
-            DispatchQueue.main.async {
-                self.presentAlertWith(title: "Error", massage: error)
-            }
-       }) {
-        updateUsersCarsToDB(userCars: userCars, userID: newUserID)
-        }
+//       if let newUserID = usersDatabaseDelegate?.addUser(user: newUser, onFailure: { [unowned self] (error) in
+//            DispatchQueue.main.async {
+//                self.presentAlertWith(title: "Error", massage: error)
+//            }
+//       }) {
+//        updateUsersCarsToDB(userCars: userCars, userID: newUserID)
+//        }
     }
     func updateUser(userID: Int64, newUser: User, userCars: [CarItem]) {
-        if usersDatabaseDelegate!.updateUser(userID: userID, newUser: newUser) {
-            updateUsersCarsToDB(userCars: userCars, userID: userID)
-        }
+//        if usersDatabaseDelegate!.updateUser(userID: userID, newUser: newUser) {
+//            updateUsersCarsToDB(userCars: userCars, userID: userID)
+//        }
     }
     //MARK:-Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Segues.newUserSegue {
-            if let destinationVC = segue.destination.contentViewController as? NewUserTableViewController {
-                destinationVC.delegate = self
-                if let user = sender as? User {
-                    destinationVC.user = user
-                }
-            }
-        }
+        presenter?.sendUserToNewUserVC(segue, sender: sender)
     }
 }
 extension AutoUsersViewController: UITableViewDataSource {
@@ -101,7 +102,7 @@ extension AutoUsersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let user = self.users[indexPath.row]
-        performSegue(withIdentifier: Segues.newUserSegue, sender: user)
+        presenter?.perfomSegueToNewUserVC(sender: user)
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         let user = self.users[indexPath.row]
@@ -109,7 +110,7 @@ extension AutoUsersViewController: UITableViewDelegate {
         tableView.deleteRows(at: [indexPath], with: .automatic)
         self.users.remove(at: indexPath.row)
         tableView.endUpdates()
-        usersDatabaseDelegate?.deleteUser(userID: user.userID)
+        presenter?.deleteUserFromDatabase(userID: user.userID)
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
