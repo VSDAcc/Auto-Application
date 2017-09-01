@@ -7,14 +7,21 @@
 //
 
 import UIKit
-protocol SaveNewUserHandler: class {
-    func saveNewUser(newUser: User, userCars: [CarItem])
-    func updateUser(userID: Int64, newUser: User, userCars: [CarItem])
+protocol NewUserTableViewControllerInput: class {
+    func didFetchUserCarFromDatabase(userCar: CarItem)
+    func didHandleErrorFromFetchingDatabase(error: String)
+    func didFetchUserFromAutoUserVC(_ user: User)
 }
-class NewUserTableViewController: UITableViewController, PresenterAlertHandler, HandleChoocenCarsForUser {
-    struct Segues {
-        static let showUsersCars = "ShowCars"
-    }
+protocol NewUserTableViewControllerOutput: class {
+    func queryAllUserCarsFromDatabase(userID: Int64)
+    func saveNewUserToDatabase(newUser: User, userCars: [CarItem])
+    func updateUserToDatabase(userID: Int64, newUser: User, userCars: [CarItem])
+    func updateUserCarToDatabase(carID: Int64, newCar: CarItem)
+    func sendUserToShowCarsVC(_ segue: UIStoryboardSegue, sender: Any?)
+    func openShowCarsVC(sender: Any?)
+    func fetchUserFromAutoUserVC(_ user: User)
+}
+class NewUserTableViewController: UITableViewController, PresenterAlertHandler, HandleChoocenCarsForUser, NewUserTableViewControllerInput {
     struct Sections {
         static let profileSection = 0
         static let usersCarsSection = 1
@@ -51,8 +58,7 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
         }
     }
     weak var showCarsTableViewCell: AddUserCarsRowTableViewCell?
-    weak var delegate: SaveNewUserHandler?
-    weak var carsDatabaseDelegate: CarsDatabaseHandler?
+    var presenter: NewUserPresenterInput!
     var user: User?
     var userCars = [CarItem]() {
         didSet {
@@ -63,13 +69,27 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
-        carsDatabaseDelegate = CarDatabaseManager.sharedManager
         registerCarCellToTableview()
-        loadUserCarsFromDB()
+        NewUserAssembly.sharedInstance.buildNewUserModule(self)
+        if user != nil {
+            presenter.queryAllUserCarsFromDatabase(userID: user!.userID)
+        }
     }
     private func configureNavigationBar() {
         navigationItem.title = "User"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveNewUser(_ :)))
+    }
+    //MARK:-NewUserViewControllerInput
+    func didFetchUserCarFromDatabase(userCar: CarItem) {
+        self.userCars.append(userCar)
+    }
+    func didHandleErrorFromFetchingDatabase(error: String) {
+        DispatchQueue.main.async {
+            self.presentAlertWith(title: "Error", massage: error)
+        }
+    }
+    func didFetchUserFromAutoUserVC(_ user: User) {
+        self.user = user
     }
     //MARK:-HandleChoocenCarsForUser
     func saveChoocenCars(cars: [CarItem]) {
@@ -81,10 +101,10 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
             _ = self.navigationController?.popViewController(animated: true)
             if user != nil {
                 let newUser = AutoUser(name: profileAccountTableViewCell!.userNameTextField.text!, userID: user!.userID, imageString: "driver.png", adress: profileAccountTableViewCell!.userAdressTextField.text!)
-                delegate?.updateUser(userID: user!.userID, newUser: newUser, userCars: userCars)
+                presenter.updateUserToDatabase(userID: user!.userID, newUser: newUser, userCars: userCars)
             }else {
                 let newUser = AutoUser(name: profileAccountTableViewCell!.userNameTextField.text!, imageString: "driver.jpeg", adress: profileAccountTableViewCell!.userAdressTextField.text!)
-                delegate?.saveNewUser(newUser: newUser, userCars: userCars)
+                presenter.saveNewUserToDatabase(newUser: newUser, userCars: userCars)
             }
         }else {
             DispatchQueue.main.async {
@@ -92,27 +112,10 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
             }
         }
     }
-    private func loadUserCarsFromDB() {
-        if user != nil {
-            carsDatabaseDelegate?.queryUsersCar(usersID: user!.userID, onSuccess: { [unowned self] (carItem) in
-                self.userCars.append(carItem)
-                }, onFailure: { (error) in
-                    DispatchQueue.main.async {
-                        self.presentAlertWith(title: "Error", massage: error)
-                    }
-            })
-        }
-    }
     //MAR:-Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Segues.showUsersCars {
-            if let destinationVC = segue.destination.contentViewController as? ShowCarsTableViewController {
-                destinationVC.handleUsersCarsDelegate = self
-                if user != nil {
-                destinationVC.user = self.user
-                destinationVC.usersCars = self.userCars
-                }
-            }
+        if user != nil {
+            presenter.sendUserToShowCarsVC(segue, sender: sender)
         }
     }
     //MARK:-UITableViewDatasource
@@ -146,7 +149,7 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == Sections.profileSection && indexPath.row == ProfileRow.addCarRow {
-            performSegue(withIdentifier: Segues.showUsersCars, sender: self)
+            presenter.openShowCarsVC(sender: nil)
         }
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -174,7 +177,7 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
         tableView.endUpdates()
             if user != nil {
                 let newCar = Car(carModel: car.carModel, carImage: car.carImage, carID: car.carID, licensePlate: car.licensePlate, userID: 0)
-                carsDatabaseDelegate?.updateCar(carID: car.carID, newCar: newCar)
+                presenter.updateUserCarToDatabase(carID: car.carID, newCar: newCar)
             }
         }
     }

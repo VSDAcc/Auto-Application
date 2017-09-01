@@ -14,6 +14,7 @@
 		200F51C31F4195D5002EB1EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200F51C11F4195D5002EB1EC /* Main.storyboard */; };
 		200F51C51F4195D5002EB1EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 200F51C41F4195D5002EB1EC /* Assets.xcassets */; };
 		200F51C81F4195D5002EB1EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200F51C61F4195D5002EB1EC /* LaunchScreen.storyboard */; };
+		202629331F59532700131CD5 /* NewUserAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202629321F59532700131CD5 /* NewUserAssembly.swift */; };
 		2063FEE61F49897B00921104 /* ProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2063FEE41F49897B00921104 /* ProfileInfoTableViewCell.swift */; };
 		2063FEE71F49897B00921104 /* ProfileInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2063FEE51F49897B00921104 /* ProfileInfoTableViewCell.xib */; };
 		2063FEEA1F49899700921104 /* AddUserCarsRowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2063FEE81F49899700921104 /* AddUserCarsRowTableViewCell.swift */; };
@@ -35,8 +36,11 @@
 		20D128EE1F540E930028D7ED /* AutoUserAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D128ED1F540E930028D7ED /* AutoUserAssembly.swift */; };
 		20D128F01F5570F70028D7ED /* NewUserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D128EF1F5570F70028D7ED /* NewUserPresenter.swift */; };
 		20D128F21F55710F0028D7ED /* NewUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D128F11F55710F0028D7ED /* NewUserInteractor.swift */; };
-		20D128F41F55711E0028D7ED /* NewUserAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D128F31F55711E0028D7ED /* NewUserAssembly.swift */; };
 		20D128F61F5571310028D7ED /* NewUserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D128F51F5571310028D7ED /* NewUserRouter.swift */; };
+		20D128FA1F586BE80028D7ED /* AutoUserModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D128F91F586BE80028D7ED /* AutoUserModuleOutput.swift */; };
+		20D128FC1F586C2B0028D7ED /* AutoUserModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D128FB1F586C2B0028D7ED /* AutoUserModuleInput.swift */; };
+		20D128FE1F586C580028D7ED /* NewUserModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D128FD1F586C580028D7ED /* NewUserModuleInput.swift */; };
+		20D129001F586C770028D7ED /* NewUserModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D128FF1F586C770028D7ED /* NewUserModuleOutput.swift */; };
 		56557DB54887ED80DD5B51A1 /* Pods_Auto_Application.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C70C7BE87D700C7597E62D5E /* Pods_Auto_Application.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +54,7 @@
 		200F51C41F4195D5002EB1EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		200F51C71F4195D5002EB1EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		200F51C91F4195D5002EB1EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		202629321F59532700131CD5 /* NewUserAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserAssembly.swift; sourceTree = "<group>"; };
 		2063FEE41F49897B00921104 /* ProfileInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoTableViewCell.swift; sourceTree = "<group>"; };
 		2063FEE51F49897B00921104 /* ProfileInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileInfoTableViewCell.xib; sourceTree = "<group>"; };
 		2063FEE81F49899700921104 /* AddUserCarsRowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserCarsRowTableViewCell.swift; sourceTree = "<group>"; };
@@ -71,8 +76,11 @@
 		20D128ED1F540E930028D7ED /* AutoUserAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoUserAssembly.swift; sourceTree = "<group>"; };
 		20D128EF1F5570F70028D7ED /* NewUserPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserPresenter.swift; sourceTree = "<group>"; };
 		20D128F11F55710F0028D7ED /* NewUserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserInteractor.swift; sourceTree = "<group>"; };
-		20D128F31F55711E0028D7ED /* NewUserAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserAssembly.swift; sourceTree = "<group>"; };
 		20D128F51F5571310028D7ED /* NewUserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserRouter.swift; sourceTree = "<group>"; };
+		20D128F91F586BE80028D7ED /* AutoUserModuleOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoUserModuleOutput.swift; sourceTree = "<group>"; };
+		20D128FB1F586C2B0028D7ED /* AutoUserModuleInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoUserModuleInput.swift; sourceTree = "<group>"; };
+		20D128FD1F586C580028D7ED /* NewUserModuleInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserModuleInput.swift; sourceTree = "<group>"; };
+		20D128FF1F586C770028D7ED /* NewUserModuleOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserModuleOutput.swift; sourceTree = "<group>"; };
 		24517120976C4F32B2575F56 /* Pods-Auto-Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Auto-Application.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Auto-Application/Pods-Auto-Application.debug.xcconfig"; sourceTree = "<group>"; };
 		B6A3F4B336F3B47FF267F2F0 /* Pods-Auto-Application.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Auto-Application.release.xcconfig"; path = "Pods/Target Support Files/Pods-Auto-Application/Pods-Auto-Application.release.xcconfig"; sourceTree = "<group>"; };
 		C70C7BE87D700C7597E62D5E /* Pods_Auto_Application.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Auto_Application.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +192,8 @@
 				20D128E91F540E2B0028D7ED /* AutoUserInteractor.swift */,
 				20D128EB1F540E380028D7ED /* AutoUserRouter.swift */,
 				20D128ED1F540E930028D7ED /* AutoUserAssembly.swift */,
+				20D128F91F586BE80028D7ED /* AutoUserModuleOutput.swift */,
+				20D128FB1F586C2B0028D7ED /* AutoUserModuleInput.swift */,
 				20DC54B11F50257D0061BAD9 /* AutoUser Cell */,
 			);
 			name = "AutoUsers Module";
@@ -195,8 +205,10 @@
 				206F9E5E1F442F1D00162707 /* NewUserTableViewController.swift */,
 				20D128EF1F5570F70028D7ED /* NewUserPresenter.swift */,
 				20D128F11F55710F0028D7ED /* NewUserInteractor.swift */,
-				20D128F31F55711E0028D7ED /* NewUserAssembly.swift */,
 				20D128F51F5571310028D7ED /* NewUserRouter.swift */,
+				202629321F59532700131CD5 /* NewUserAssembly.swift */,
+				20D128FF1F586C770028D7ED /* NewUserModuleOutput.swift */,
+				20D128FD1F586C580028D7ED /* NewUserModuleInput.swift */,
 				20DC54B61F5025FB0061BAD9 /* NewUser Cell */,
 			);
 			name = "NewUser Module";
@@ -408,6 +420,7 @@
 				200F51BE1F4195D5002EB1EC /* AppDelegate.swift in Sources */,
 				20D128F61F5571310028D7ED /* NewUserRouter.swift in Sources */,
 				20D128F21F55710F0028D7ED /* NewUserInteractor.swift in Sources */,
+				20D128FE1F586C580028D7ED /* NewUserModuleInput.swift in Sources */,
 				206F9E621F4446F400162707 /* AlertMethods.swift in Sources */,
 				20D128EC1F540E380028D7ED /* AutoUserRouter.swift in Sources */,
 				206F9E641F444C4C00162707 /* CarsViewController.swift in Sources */,
@@ -415,13 +428,16 @@
 				206F9E5A1F42F80700162707 /* AutoUsersTableViewCell.swift in Sources */,
 				20D128EA1F540E2B0028D7ED /* AutoUserInteractor.swift in Sources */,
 				208FDFB81F458F0400F9E298 /* Car.swift in Sources */,
+				20D128FA1F586BE80028D7ED /* AutoUserModuleOutput.swift in Sources */,
 				2063FEEA1F49899700921104 /* AddUserCarsRowTableViewCell.swift in Sources */,
 				20D128F01F5570F70028D7ED /* NewUserPresenter.swift in Sources */,
 				20091DF51F482FF10013DBAA /* ShowCarsTableViewCell.swift in Sources */,
+				20D129001F586C770028D7ED /* NewUserModuleOutput.swift in Sources */,
 				20D128EE1F540E930028D7ED /* AutoUserAssembly.swift in Sources */,
-				20D128F41F55711E0028D7ED /* NewUserAssembly.swift in Sources */,
 				2063FEE61F49897B00921104 /* ProfileInfoTableViewCell.swift in Sources */,
+				20D128FC1F586C2B0028D7ED /* AutoUserModuleInput.swift in Sources */,
 				206F9E561F42F16F00162707 /* AutoUsersViewController.swift in Sources */,
+				202629331F59532700131CD5 /* NewUserAssembly.swift in Sources */,
 				20091DF21F482C3C0013DBAA /* ShowCarsTableViewController.swift in Sources */,
 				206F9E5F1F442F1D00162707 /* NewUserTableViewController.swift in Sources */,
 				206F9E541F42DD1D00162707 /* AutoUser.swift in Sources */,

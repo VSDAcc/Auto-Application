@@ -8,16 +8,16 @@
 
 import UIKit
 protocol AutoUserViewControllerInput: class {
-    func fetchAllUsersFromDatabase(usersArray: [User])
-    func handleErrorFromFetchingUsersFromDatabase(error: String)
+    func didFetchAllUsersFromDatabase(usersArray: [User])
+    func didHandleErrorFromFetchingUsersFromDatabase(error: String)
 }
 protocol AutoUserViewControllerOutput: class {
     func queryAllUsersFromDatabase()
     func deleteUserFromDatabase(userID:Int64)
     func sendUserToNewUserVC(_ segue: UIStoryboardSegue, sender: Any?)
-    func perfomSegueToNewUserVC(sender: Any?)
+    func openNewUserVC(sender: Any?)
 }
-class AutoUsersViewController: UIViewController, SaveNewUserHandler, PresenterAlertHandler, AutoUserViewControllerInput {
+class AutoUsersViewController: UIViewController, PresenterAlertHandler, AutoUserViewControllerInput {
     struct CellConstants {
         static let cellID = "AutoUserCell"
         static let cellNIB = "AutoUsersTableViewCell"
@@ -30,8 +30,7 @@ class AutoUsersViewController: UIViewController, SaveNewUserHandler, PresenterAl
             tableView.rowHeight = UITableViewAutomaticDimension
         }
     }
-    weak var carsDatabaseDelegate: CarsDatabaseHandler?
-    var presenter: AutoUserPresenterInput?
+    var presenter: AutoUserPresenterInput!
     var users = [User]() {
         didSet {
             tableView.reloadData()
@@ -40,44 +39,22 @@ class AutoUsersViewController: UIViewController, SaveNewUserHandler, PresenterAl
     //MARK:-Loading
     override func viewDidLoad() {
         super.viewDidLoad()
-        carsDatabaseDelegate = CarDatabaseManager.sharedManager
         AutoUserAssembly.sharedInstance.buildAutoUserModule(self)
     }
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        presenter?.queryAllUsersFromDatabase()
+        super.viewWillAppear(animated)
+        presenter.queryAllUsersFromDatabase()
     }
     //MARK:-AutoUserViewControllerInput
-    func fetchAllUsersFromDatabase(usersArray: [User]) {
+    func didFetchAllUsersFromDatabase(usersArray: [User]) {
         DispatchQueue.main.async {
-            self.users.append(contentsOf: usersArray)
+            self.users = usersArray
         }
     }
-    func handleErrorFromFetchingUsersFromDatabase(error: String) {
+    func didHandleErrorFromFetchingUsersFromDatabase(error: String) {
         DispatchQueue.main.async {
             self.presentAlertWith(title: "Error", massage: error)
         }
-    }
-    //MARK:-SaveNewUserHandler
-    private func updateUsersCarsToDB(userCars: [CarItem], userID: Int64) {
-        for car in userCars {
-            let newCar = Car(carModel: car.carModel, carImage: car.carImage, licensePlate: car.licensePlate, userID: userID)
-            carsDatabaseDelegate?.updateCar(carID: car.carID, newCar:newCar)
-        }
-    }
-    func saveNewUser(newUser: User, userCars: [CarItem]) {
-//       if let newUserID = usersDatabaseDelegate?.addUser(user: newUser, onFailure: { [unowned self] (error) in
-//            DispatchQueue.main.async {
-//                self.presentAlertWith(title: "Error", massage: error)
-//            }
-//       }) {
-//        updateUsersCarsToDB(userCars: userCars, userID: newUserID)
-//        }
-    }
-    func updateUser(userID: Int64, newUser: User, userCars: [CarItem]) {
-//        if usersDatabaseDelegate!.updateUser(userID: userID, newUser: newUser) {
-//            updateUsersCarsToDB(userCars: userCars, userID: userID)
-//        }
     }
     //MARK:-Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -102,7 +79,7 @@ extension AutoUsersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let user = self.users[indexPath.row]
-        presenter?.perfomSegueToNewUserVC(sender: user)
+        presenter?.openNewUserVC(sender: user)
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         let user = self.users[indexPath.row]

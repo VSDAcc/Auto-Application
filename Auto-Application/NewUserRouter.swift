@@ -6,4 +6,26 @@
 //  Copyright © 2017 VLadymyrShorokhov. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+protocol NewUserRouterInput: class {
+    func sendUserToShowCarsVC(_ segue: UIStoryboardSegue, sender: Any?)
+    func openShowCarsVC(sender: Any?)
+}
+class NewUserRouter: NewUserRouterInput {
+    weak var view: NewUserTableViewController!
+    struct Segues {
+        static let showUsersCars = "ShowCars"
+    }
+    func openShowCarsVC(sender: Any?) {
+        view.performSegue(withIdentifier: Segues.showUsersCars, sender: sender)
+    }
+    func sendUserToShowCarsVC(_ segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.showUsersCars {
+            if let destinationVC = segue.destination.contentViewController as? ShowCarsTableViewController {
+                destinationVC.user = view.user
+                destinationVC.usersCars = view.userCars
+            }
+        }
+    }
+}

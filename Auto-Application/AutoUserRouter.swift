@@ -9,19 +9,15 @@
 import UIKit
 protocol AutoUserRouterInput: class {
     func sendUserToNewUserVC(_ segue: UIStoryboardSegue, sender: Any?)
-    func perfomSegueToNewUserVC(sender: Any?)
-    weak var view: AutoUsersViewController? {get}
-}
-protocol AutouserRouterOutput: class {
-    
+    func openNewUserVC(sender: Any?)
 }
 class AutoUserRouter: AutoUserRouterInput {
-    weak var view: AutoUsersViewController?
+    weak var view: AutoUsersViewController!
     struct Segues {
         static let newUserSegue = "newUserSegue"
     }
-    func perfomSegueToNewUserVC(sender: Any?) {
-        view?.performSegue(withIdentifier: Segues.newUserSegue, sender: sender)
+    func openNewUserVC(sender: Any?) {
+        view.performSegue(withIdentifier: Segues.newUserSegue, sender: sender)
     }
     func sendUserToNewUserVC(_ segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.newUserSegue {

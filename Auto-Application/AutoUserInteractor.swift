@@ -12,18 +12,18 @@ protocol AutoUserInteractorInput: class {
     func deleteUserFromDatabase(userID:Int64)
 }
 protocol AutoUserInteractorOutput: class {
-    func fetchAllUsersFromDatabase(usersArray: [User])
-    func handleErrorFromFetchingUsersFromDatabase(error: String)
+    func didFetchAllUsersFromDatabase(usersArray: [User])
+    func didHandleErrorFromFetchingUsersFromDatabase(error: String)
 }
 class AutoUserInteractor: AutoUserInteractorInput {
 
     var userDatabase: UsersDatabaseHandler?
-    weak var presenter: AutoUserPresenterInput?
+    weak var presenter: AutoUserPresenterInput!
     func queryAllUsersFromDatabase() {
-        userDatabase?.queryAllUsers(onSucces: { (usersArray) in
-            self.presenter?.fetchAllUsersFromDatabase(usersArray: usersArray)
-        }, onFailure: { (error) in
-            self.presenter?.handleErrorFromFetchingUsersFromDatabase(error: error)
+        userDatabase?.queryAllUsers(onSucces: { [unowned self] (usersArray) in
+            self.presenter.didFetchAllUsersFromDatabase(usersArray: usersArray)
+        }, onFailure: { [unowned self] (error) in
+            self.presenter.didHandleErrorFromFetchingUsersFromDatabase(error: error)
         })
     }
     func deleteUserFromDatabase(userID:Int64) {
