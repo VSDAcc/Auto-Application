@@ -129,6 +129,92 @@
 			path = "Auto-Application";
 			sourceTree = "<group>";
 		};
+		202629341F597A7A00131CD5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				20DC54B11F50257D0061BAD9 /* AutoUser Cell */,
+				206F9E551F42F16F00162707 /* AutoUsersViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		202629351F597A8300131CD5 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				20D128E71F540E130028D7ED /* AutoUserPresenter.swift */,
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
+		202629361F597A8800131CD5 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				20D128E91F540E2B0028D7ED /* AutoUserInteractor.swift */,
+			);
+			name = Interactor;
+			sourceTree = "<group>";
+		};
+		202629371F597A9100131CD5 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				20D128ED1F540E930028D7ED /* AutoUserAssembly.swift */,
+				20D128EB1F540E380028D7ED /* AutoUserRouter.swift */,
+			);
+			name = Wireframe;
+			sourceTree = "<group>";
+		};
+		202629381F597A9600131CD5 /* ModuleInputOutput */ = {
+			isa = PBXGroup;
+			children = (
+				20D128F91F586BE80028D7ED /* AutoUserModuleOutput.swift */,
+				20D128FB1F586C2B0028D7ED /* AutoUserModuleInput.swift */,
+			);
+			name = ModuleInputOutput;
+			sourceTree = "<group>";
+		};
+		202629391F597AD600131CD5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				20DC54B61F5025FB0061BAD9 /* NewUser Cell */,
+				206F9E5E1F442F1D00162707 /* NewUserTableViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		2026293A1F597ADF00131CD5 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				20D128EF1F5570F70028D7ED /* NewUserPresenter.swift */,
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
+		2026293B1F597AE500131CD5 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				20D128F11F55710F0028D7ED /* NewUserInteractor.swift */,
+			);
+			name = Interactor;
+			sourceTree = "<group>";
+		};
+		2026293C1F597AEA00131CD5 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				202629321F59532700131CD5 /* NewUserAssembly.swift */,
+				20D128F51F5571310028D7ED /* NewUserRouter.swift */,
+			);
+			name = Wireframe;
+			sourceTree = "<group>";
+		};
+		2026293D1F597AF400131CD5 /* ModuleInputOutput */ = {
+			isa = PBXGroup;
+			children = (
+				20D128FD1F586C580028D7ED /* NewUserModuleInput.swift */,
+				20D128FF1F586C770028D7ED /* NewUserModuleOutput.swift */,
+			);
+			name = ModuleInputOutput;
+			sourceTree = "<group>";
+		};
 		206F9E481F41994900162707 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,14 +273,11 @@
 		20DC54A41F5023E60061BAD9 /* AutoUsers Module */ = {
 			isa = PBXGroup;
 			children = (
-				206F9E551F42F16F00162707 /* AutoUsersViewController.swift */,
-				20D128E71F540E130028D7ED /* AutoUserPresenter.swift */,
-				20D128E91F540E2B0028D7ED /* AutoUserInteractor.swift */,
-				20D128EB1F540E380028D7ED /* AutoUserRouter.swift */,
-				20D128ED1F540E930028D7ED /* AutoUserAssembly.swift */,
-				20D128F91F586BE80028D7ED /* AutoUserModuleOutput.swift */,
-				20D128FB1F586C2B0028D7ED /* AutoUserModuleInput.swift */,
-				20DC54B11F50257D0061BAD9 /* AutoUser Cell */,
+				202629341F597A7A00131CD5 /* View */,
+				202629351F597A8300131CD5 /* Presenter */,
+				202629361F597A8800131CD5 /* Interactor */,
+				202629371F597A9100131CD5 /* Wireframe */,
+				202629381F597A9600131CD5 /* ModuleInputOutput */,
 			);
 			name = "AutoUsers Module";
 			sourceTree = "<group>";
@@ -202,14 +285,11 @@
 		20DC54A51F5023FC0061BAD9 /* NewUser Module */ = {
 			isa = PBXGroup;
 			children = (
-				206F9E5E1F442F1D00162707 /* NewUserTableViewController.swift */,
-				20D128EF1F5570F70028D7ED /* NewUserPresenter.swift */,
-				20D128F11F55710F0028D7ED /* NewUserInteractor.swift */,
-				20D128F51F5571310028D7ED /* NewUserRouter.swift */,
-				202629321F59532700131CD5 /* NewUserAssembly.swift */,
-				20D128FF1F586C770028D7ED /* NewUserModuleOutput.swift */,
-				20D128FD1F586C580028D7ED /* NewUserModuleInput.swift */,
-				20DC54B61F5025FB0061BAD9 /* NewUser Cell */,
+				202629391F597AD600131CD5 /* View */,
+				2026293A1F597ADF00131CD5 /* Presenter */,
+				2026293B1F597AE500131CD5 /* Interactor */,
+				2026293C1F597AEA00131CD5 /* Wireframe */,
+				2026293D1F597AF400131CD5 /* ModuleInputOutput */,
 			);
 			name = "NewUser Module";
 			sourceTree = "<group>";

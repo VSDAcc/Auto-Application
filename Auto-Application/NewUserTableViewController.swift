@@ -70,10 +70,13 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
         super.viewDidLoad()
         configureNavigationBar()
         registerCarCellToTableview()
-        NewUserAssembly.sharedInstance.buildNewUserModule(self)
         if user != nil {
             presenter.queryAllUserCarsFromDatabase(userID: user!.userID)
         }
+    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        NewUserAssembly.sharedInstance.buildNewUserModule(self)
     }
     private func configureNavigationBar() {
         navigationItem.title = "User"

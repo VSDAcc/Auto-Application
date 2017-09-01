@@ -37,8 +37,8 @@ class AutoUsersViewController: UIViewController, PresenterAlertHandler, AutoUser
         }
     }
     //MARK:-Loading
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func awakeFromNib() {
+        super.awakeFromNib()
         AutoUserAssembly.sharedInstance.buildAutoUserModule(self)
     }
     override func viewWillAppear(_ animated: Bool) {
