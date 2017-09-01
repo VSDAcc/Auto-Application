@@ -27,9 +27,7 @@ class NewUserInteractor: NewUserInteractorInput {
     var user: User?
     //MARK:-RoutinInputData
     func saveUserFromAutoUserVC(_ user: User) {
-        self.user = user
-//        presenter.didFetchUserFromAutoUserVC(user: user)
-        print(user.userID)
+        presenter.didFetchUserFromAutoUserVC(user)
     }
     //MARK:-UserDatabase
     func updateUserToDatabase(userID: Int64, newUser: User, userCars: [CarItem]) {

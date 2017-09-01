@@ -23,7 +23,7 @@ class AutoUserRouter: AutoUserRouterInput {
         if segue.identifier == Segues.newUserSegue {
             if let destinationVC = segue.destination.contentViewController as? NewUserTableViewController {
                 if let user = sender as? User {
-                    destinationVC.user = user
+                    destinationVC.presenter.fetchUserFromAutoUserVC(user)
                 }
             }
         }

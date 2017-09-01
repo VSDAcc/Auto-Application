@@ -132,8 +132,8 @@
 		202629341F597A7A00131CD5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				20DC54B11F50257D0061BAD9 /* AutoUser Cell */,
 				206F9E551F42F16F00162707 /* AutoUsersViewController.swift */,
+				20DC54B11F50257D0061BAD9 /* AutoUser Cell */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -175,8 +175,8 @@
 		202629391F597AD600131CD5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				20DC54B61F5025FB0061BAD9 /* NewUser Cell */,
 				206F9E5E1F442F1D00162707 /* NewUserTableViewController.swift */,
+				20DC54B61F5025FB0061BAD9 /* NewUser Cell */,
 			);
 			name = View;
 			sourceTree = "<group>";
