@@ -21,7 +21,7 @@ protocol NewUserTableViewControllerOutput: class {
     func openShowCarsVC(sender: Any?)
     func fetchUserFromAutoUserVC(_ user: User)
 }
-class NewUserTableViewController: UITableViewController, PresenterAlertHandler, HandleChoocenCarsForUser, NewUserTableViewControllerInput {
+class NewUserTableViewController: UITableViewController, PresenterAlertHandler, NewUserTableViewControllerInput {
     struct Sections {
         static let profileSection = 0
         static let usersCarsSection = 1
@@ -94,11 +94,7 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
     func didFetchUserFromAutoUserVC(_ user: User) {
         self.user = user
     }
-    //MARK:-HandleChoocenCarsForUser
-    func saveChoocenCars(cars: [CarItem]) {
-        userCars = cars
-    }
-    //MARK:-Database
+    //MARK:-Actions
     func saveNewUser(_ sender: UIBarButtonItem) {
         if !profileAccountTableViewCell!.userNameTextField.text!.isEmpty && !profileAccountTableViewCell!.userAdressTextField.text!.isEmpty {
             _ = self.navigationController?.popViewController(animated: true)

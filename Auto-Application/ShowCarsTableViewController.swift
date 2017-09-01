@@ -7,10 +7,16 @@
 //
 
 import UIKit
-protocol HandleChoocenCarsForUser: class {
-    func saveChoocenCars(cars: [CarItem])
+protocol ShowCarsTableViewControllerInput: class {
+    func didFetchAllCarsFromDatabase(userCars: [CarItem])
+    func didHandleErrorFromFetchingDatabase(error: String)
+    func didHandleUserAndUserCarsFromNewUserVC(user: User, userCars: [CarItem])
 }
-class ShowCarsTableViewController: UITableViewController, PresenterAlertHandler {
+protocol ShowCarsTableViewControllerOutput: class {
+    func queryAllCarsFromDatabase()
+    func fetchUserAndUserCarsFromNewUserVC(user: User, userCars: [CarItem])
+}
+class ShowCarsTableViewController: UITableViewController, PresenterAlertHandler, ShowCarsTableViewControllerInput {
     
     struct CellConstants {
         static let cellID = "ShowCarsCell"
@@ -22,8 +28,7 @@ class ShowCarsTableViewController: UITableViewController, PresenterAlertHandler 
         tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableViewAutomaticDimension
     }
-    weak var carsDatabaseDelegate: CarsDatabaseHandler?
-    weak var handleUsersCarsDelegate: HandleChoocenCarsForUser?
+    var presenter: ShowCarsPresenterInput!
     var cars = [CarItem]() {
         didSet {
             tableView.reloadData()
@@ -35,29 +40,35 @@ class ShowCarsTableViewController: UITableViewController, PresenterAlertHandler 
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCarCellToTableview()
-        carsDatabaseDelegate = CarDatabaseManager.sharedManager
+        presenter.queryAllCarsFromDatabase()
+    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        ShowCarsAssembly.sharedInstance.buildNewUserModule(self)
     }
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        loadCarsFromDB()
+        super.viewWillAppear(animated)
         configureNavigationBar()
     }
     private func configureNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveUsersCars(_ :)))
     }
+    //MARK:-Actions
     func saveUsersCars(_ sender: UIBarButtonItem) {
         _ = navigationController?.popViewController(animated: true)
-        handleUsersCarsDelegate?.saveChoocenCars(cars: usersCars)
     }
-    //MARK:-Database
-    private func loadCarsFromDB() {
-        carsDatabaseDelegate?.queryAllCars(onSucces: { [unowned self] (carsArray) in
-            self.cars = carsArray
-            }, onFailure: { (error) in
-                DispatchQueue.main.async {
-                    self.presentAlertWith(title: "Error", massage: error)
-                }
-        })
+    //MARK:-ShowCarsTableViewControllerInput
+    func didFetchAllCarsFromDatabase(userCars: [CarItem]) {
+        self.cars = userCars
+    }
+    func didHandleErrorFromFetchingDatabase(error: String) {
+        DispatchQueue.main.async {
+            self.presentAlertWith(title: "Error", massage: error)
+        }
+    }
+    func didHandleUserAndUserCarsFromNewUserVC(user: User, userCars: [CarItem]) {
+        self.user = user
+        self.usersCars = userCars
     }
     //MARK:-UITableViewDatasource
     override func numberOfSections(in tableView: UITableView) -> Int {

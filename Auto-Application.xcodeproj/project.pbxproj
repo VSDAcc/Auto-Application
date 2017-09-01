@@ -15,6 +15,14 @@
 		200F51C51F4195D5002EB1EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 200F51C41F4195D5002EB1EC /* Assets.xcassets */; };
 		200F51C81F4195D5002EB1EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200F51C61F4195D5002EB1EC /* LaunchScreen.storyboard */; };
 		202629331F59532700131CD5 /* NewUserAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202629321F59532700131CD5 /* NewUserAssembly.swift */; };
+		202629451F5981EF00131CD5 /* ShowCarsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202629441F5981EF00131CD5 /* ShowCarsPresenter.swift */; };
+		202629471F59822F00131CD5 /* ShowCarsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202629461F59822F00131CD5 /* ShowCarsInteractor.swift */; };
+		202629491F5982A200131CD5 /* ShowCarsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202629481F5982A200131CD5 /* ShowCarsAssembly.swift */; };
+		2026294B1F5982B100131CD5 /* ShowCarsRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2026294A1F5982B100131CD5 /* ShowCarsRouting.swift */; };
+		2026294E1F59925300131CD5 /* CarsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2026294D1F59925300131CD5 /* CarsPresenter.swift */; };
+		202629501F59926500131CD5 /* CarsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2026294F1F59926500131CD5 /* CarsInteractor.swift */; };
+		202629521F59927200131CD5 /* CarsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202629511F59927200131CD5 /* CarsRouter.swift */; };
+		202629541F59928100131CD5 /* CarsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202629531F59928100131CD5 /* CarsAssembly.swift */; };
 		2063FEE61F49897B00921104 /* ProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2063FEE41F49897B00921104 /* ProfileInfoTableViewCell.swift */; };
 		2063FEE71F49897B00921104 /* ProfileInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2063FEE51F49897B00921104 /* ProfileInfoTableViewCell.xib */; };
 		2063FEEA1F49899700921104 /* AddUserCarsRowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2063FEE81F49899700921104 /* AddUserCarsRowTableViewCell.swift */; };
@@ -55,6 +63,14 @@
 		200F51C71F4195D5002EB1EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		200F51C91F4195D5002EB1EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		202629321F59532700131CD5 /* NewUserAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserAssembly.swift; sourceTree = "<group>"; };
+		202629441F5981EF00131CD5 /* ShowCarsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCarsPresenter.swift; sourceTree = "<group>"; };
+		202629461F59822F00131CD5 /* ShowCarsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCarsInteractor.swift; sourceTree = "<group>"; };
+		202629481F5982A200131CD5 /* ShowCarsAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCarsAssembly.swift; sourceTree = "<group>"; };
+		2026294A1F5982B100131CD5 /* ShowCarsRouting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCarsRouting.swift; sourceTree = "<group>"; };
+		2026294D1F59925300131CD5 /* CarsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarsPresenter.swift; sourceTree = "<group>"; };
+		2026294F1F59926500131CD5 /* CarsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarsInteractor.swift; sourceTree = "<group>"; };
+		202629511F59927200131CD5 /* CarsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarsRouter.swift; sourceTree = "<group>"; };
+		202629531F59928100131CD5 /* CarsAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarsAssembly.swift; sourceTree = "<group>"; };
 		2063FEE41F49897B00921104 /* ProfileInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoTableViewCell.swift; sourceTree = "<group>"; };
 		2063FEE51F49897B00921104 /* ProfileInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileInfoTableViewCell.xib; sourceTree = "<group>"; };
 		2063FEE81F49899700921104 /* AddUserCarsRowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserCarsRowTableViewCell.swift; sourceTree = "<group>"; };
@@ -215,6 +231,81 @@
 			name = ModuleInputOutput;
 			sourceTree = "<group>";
 		};
+		2026293E1F5980BC00131CD5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				20091DF11F482C3C0013DBAA /* ShowCarsTableViewController.swift */,
+				20DC54BB1F5026750061BAD9 /* ShowCars Cell */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		2026293F1F5980C500131CD5 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				202629441F5981EF00131CD5 /* ShowCarsPresenter.swift */,
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
+		202629401F5980CB00131CD5 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				202629461F59822F00131CD5 /* ShowCarsInteractor.swift */,
+			);
+			name = Interactor;
+			sourceTree = "<group>";
+		};
+		202629411F5980F900131CD5 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				202629481F5982A200131CD5 /* ShowCarsAssembly.swift */,
+				2026294A1F5982B100131CD5 /* ShowCarsRouting.swift */,
+			);
+			name = Wireframe;
+			sourceTree = "<group>";
+		};
+		202629431F59816E00131CD5 /* ModuleInputOutput */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ModuleInputOutput;
+			sourceTree = "<group>";
+		};
+		202629551F59928C00131CD5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				206F9E631F444C4C00162707 /* CarsViewController.swift */,
+				20DC54A91F5024440061BAD9 /* Cars Cell */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		202629571F59929C00131CD5 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				2026294D1F59925300131CD5 /* CarsPresenter.swift */,
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
+		202629581F5992A100131CD5 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				2026294F1F59926500131CD5 /* CarsInteractor.swift */,
+			);
+			name = Interactor;
+			sourceTree = "<group>";
+		};
+		202629591F5992A700131CD5 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				202629531F59928100131CD5 /* CarsAssembly.swift */,
+				202629511F59927200131CD5 /* CarsRouter.swift */,
+			);
+			name = Wireframe;
+			sourceTree = "<group>";
+		};
 		206F9E481F41994900162707 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,8 +388,11 @@
 		20DC54A61F50240B0061BAD9 /* ShowCars Module */ = {
 			isa = PBXGroup;
 			children = (
-				20091DF11F482C3C0013DBAA /* ShowCarsTableViewController.swift */,
-				20DC54BB1F5026750061BAD9 /* ShowCars Cell */,
+				2026293E1F5980BC00131CD5 /* View */,
+				2026293F1F5980C500131CD5 /* Presenter */,
+				202629401F5980CB00131CD5 /* Interactor */,
+				202629411F5980F900131CD5 /* Wireframe */,
+				202629431F59816E00131CD5 /* ModuleInputOutput */,
 			);
 			name = "ShowCars Module";
 			sourceTree = "<group>";
@@ -306,8 +400,10 @@
 		20DC54A71F50242A0061BAD9 /* Cars Module */ = {
 			isa = PBXGroup;
 			children = (
-				206F9E631F444C4C00162707 /* CarsViewController.swift */,
-				20DC54A91F5024440061BAD9 /* Cars Cell */,
+				202629551F59928C00131CD5 /* View */,
+				202629571F59929C00131CD5 /* Presenter */,
+				202629581F5992A100131CD5 /* Interactor */,
+				202629591F5992A700131CD5 /* Wireframe */,
 			);
 			name = "Cars Module";
 			sourceTree = "<group>";
@@ -496,6 +592,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2026294B1F5982B100131CD5 /* ShowCarsRouting.swift in Sources */,
 				206F9E501F419AD000162707 /* DatabaseManger.swift in Sources */,
 				200F51BE1F4195D5002EB1EC /* AppDelegate.swift in Sources */,
 				20D128F61F5571310028D7ED /* NewUserRouter.swift in Sources */,
@@ -505,16 +602,23 @@
 				20D128EC1F540E380028D7ED /* AutoUserRouter.swift in Sources */,
 				206F9E641F444C4C00162707 /* CarsViewController.swift in Sources */,
 				208FDFBB1F45991C00F9E298 /* CarTableViewCell.swift in Sources */,
+				202629451F5981EF00131CD5 /* ShowCarsPresenter.swift in Sources */,
 				206F9E5A1F42F80700162707 /* AutoUsersTableViewCell.swift in Sources */,
 				20D128EA1F540E2B0028D7ED /* AutoUserInteractor.swift in Sources */,
+				202629521F59927200131CD5 /* CarsRouter.swift in Sources */,
 				208FDFB81F458F0400F9E298 /* Car.swift in Sources */,
 				20D128FA1F586BE80028D7ED /* AutoUserModuleOutput.swift in Sources */,
 				2063FEEA1F49899700921104 /* AddUserCarsRowTableViewCell.swift in Sources */,
+				2026294E1F59925300131CD5 /* CarsPresenter.swift in Sources */,
 				20D128F01F5570F70028D7ED /* NewUserPresenter.swift in Sources */,
 				20091DF51F482FF10013DBAA /* ShowCarsTableViewCell.swift in Sources */,
+				202629541F59928100131CD5 /* CarsAssembly.swift in Sources */,
+				202629501F59926500131CD5 /* CarsInteractor.swift in Sources */,
 				20D129001F586C770028D7ED /* NewUserModuleOutput.swift in Sources */,
 				20D128EE1F540E930028D7ED /* AutoUserAssembly.swift in Sources */,
 				2063FEE61F49897B00921104 /* ProfileInfoTableViewCell.swift in Sources */,
+				202629471F59822F00131CD5 /* ShowCarsInteractor.swift in Sources */,
+				202629491F5982A200131CD5 /* ShowCarsAssembly.swift in Sources */,
 				20D128FC1F586C2B0028D7ED /* AutoUserModuleInput.swift in Sources */,
 				206F9E561F42F16F00162707 /* AutoUsersViewController.swift in Sources */,
 				202629331F59532700131CD5 /* NewUserAssembly.swift in Sources */,

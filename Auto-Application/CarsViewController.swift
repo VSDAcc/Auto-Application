@@ -7,8 +7,16 @@
 //
 
 import UIKit
-
-class CarsViewController: UIViewController, PresenterAlertHandler {
+protocol CarsViewControllerInput: class {
+    func didFetchAllCarsFromDatabase(userCars: [CarItem])
+    func didHandleErrorFromFetchingDatabase(error: String)
+}
+protocol CarsViewControllerOutput: class {
+    func queryAllCarsFromDatabase()
+    func addMoreCarsToDatabase()
+    func deleteCarFromDatabase(carID: Int64)
+}
+class CarsViewController: UIViewController, PresenterAlertHandler, CarsViewControllerInput {
     struct CellConstants {
         static let cellID = "CarCell"
         static let cellNIB = "CarTableViewCell"
@@ -21,7 +29,7 @@ class CarsViewController: UIViewController, PresenterAlertHandler {
             tableView.rowHeight = UITableViewAutomaticDimension
         }
     }
-    weak var carsDatabaseDelegate: CarsDatabaseHandler?
+    var presenter: CarsPresenterInput!
     var cars = [CarItem]() {
         didSet {
             tableView.reloadData()
@@ -30,35 +38,32 @@ class CarsViewController: UIViewController, PresenterAlertHandler {
     //MARK:-Loading
     override func viewDidLoad() {
         super.viewDidLoad()
-        carsDatabaseDelegate = CarDatabaseManager.sharedManager
         configureNavigationBar()
     }
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        loadCarsFromDB()
+        super.viewWillAppear(animated)
+        presenter.queryAllCarsFromDatabase()
     }
     private func configureNavigationBar() {
         navigationItem.title = "Cars"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCars(_ :)))
     }
-    func addCars(_ sender: UIBarButtonItem) {
-        for _ in 1...10 {
-            let car = Car(carModel: "BMW", carImage: "car.png", licensePlate: "030043504305", userID: 0)
-            carsDatabaseDelegate?.addCar(car: car, onFailure: { [unowned self](error) in
-                self.presentAlertWith(title: "error", massage: error)
-            })
-        }
-        loadCarsFromDB()
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        CarsAssembly.sharedInstance.buildAutoUserModule(self)
     }
-    //MARK:-Database
-    private func loadCarsFromDB() {
-        carsDatabaseDelegate?.queryAllCars(onSucces: { [unowned self](carsArray) in
-            self.cars = carsArray
-            }, onFailure: { (error) in
-                DispatchQueue.main.async {
-                    self.presentAlertWith(title: "Error", massage: error)
-                }
-        })
+    //MARK:-Actions
+    func addCars(_ sender: UIBarButtonItem) {
+        presenter.addMoreCarsToDatabase()
+    }
+    //MARK:-CarsViewControllerInput
+    func didFetchAllCarsFromDatabase(userCars: [CarItem]) {
+        self.cars = userCars
+    }
+    func didHandleErrorFromFetchingDatabase(error: String) {
+        DispatchQueue.main.async {
+            self.presentAlertWith(title: "Error", massage: error)
+        }
     }
 }
 extension CarsViewController: UITableViewDataSource {
@@ -85,7 +90,7 @@ extension CarsViewController: UITableViewDelegate {
         tableView.deleteRows(at: [indexPath], with: .automatic)
         self.cars.remove(at: indexPath.row)
         tableView.endUpdates()
-        carsDatabaseDelegate?.deleteCar(carID: car.carID)
+        presenter.deleteCarFromDatabase(carID: car.carID)
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
