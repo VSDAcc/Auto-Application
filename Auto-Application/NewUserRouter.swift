@@ -23,7 +23,9 @@ class NewUserRouter: NewUserRouterInput {
     func sendUserToShowCarsVC(_ segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.showUsersCars {
             if let destinationVC = segue.destination.contentViewController as? ShowCarsTableViewController {
+                if view.user != nil {
                 destinationVC.presenter.didHandleUserAndUserCarsFromNewUserVC(user: view.user!, userCars: view.userCars)
+                }
                 destinationVC.presenter.delegate = view.presenter
             }
         }

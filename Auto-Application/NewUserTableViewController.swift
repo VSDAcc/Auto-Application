@@ -117,9 +117,7 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
     }
     //MAR:-Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if user != nil {
             presenter.sendUserToShowCarsVC(segue, sender: sender)
-        }
     }
     //MARK:-UITableViewDatasource
     override func numberOfSections(in tableView: UITableView) -> Int {
