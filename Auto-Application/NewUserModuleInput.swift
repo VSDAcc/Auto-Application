@@ -8,3 +8,6 @@
 
 import Foundation
 
+protocol NewUserModuleInput: class {
+    func didFetchUserCars(_ userCars: [CarItem])
+}

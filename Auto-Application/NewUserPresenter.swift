@@ -7,17 +7,17 @@
 //
 
 import UIKit
-protocol NewUserPresenterInput: NewUserTableViewControllerOutput, NewUserInteractorOutput {
-    
-}
-protocol NewUserPresenterOutput: NewUserTableViewControllerInput {
-    
-}
+protocol NewUserPresenterInput: NewUserTableViewControllerOutput, NewUserInteractorOutput, NewUserModuleInput {}
+protocol NewUserPresenterOutput: NewUserTableViewControllerInput {}
 class NewUserPresenter: NewUserPresenterInput {
     
     weak var view: NewUserTableViewControllerInput!
     var interactor: NewUserInteractorInput!
     var router: NewUserRouterInput!
+    //MARK:-ModuleInput
+    func didFetchUserCars(_ userCars: [CarItem]) {
+        interactor.fetchUserCarsFromShowCarsVC(userCars)
+    }
     //MARK:-Interactor
     func queryAllUserCarsFromDatabase(userID: Int64) {
         interactor.queryAllUserCarsFromDatabase(userID: userID)
@@ -43,6 +43,9 @@ class NewUserPresenter: NewUserPresenterInput {
     }
     func didFetchUserFromAutoUserVC(_ user: User) {
         view.didFetchUserFromAutoUserVC(user)
+    }
+    func didFetchUserCarsFromShowCarsVC(_ userCars: [CarItem]) {
+        view.didFetchUserCarsFromShowCarsVC(userCars)
     }
     //MARK:-Router
     func sendUserToShowCarsVC(_ segue: UIStoryboardSegue, sender: Any?) {

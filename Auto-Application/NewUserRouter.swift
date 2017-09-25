@@ -24,6 +24,7 @@ class NewUserRouter: NewUserRouterInput {
         if segue.identifier == Segues.showUsersCars {
             if let destinationVC = segue.destination.contentViewController as? ShowCarsTableViewController {
                 destinationVC.presenter.didHandleUserAndUserCarsFromNewUserVC(user: view.user!, userCars: view.userCars)
+                destinationVC.presenter.delegate = view.presenter
             }
         }
     }

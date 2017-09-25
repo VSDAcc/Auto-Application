@@ -15,6 +15,7 @@ protocol ShowCarsTableViewControllerInput: class {
 protocol ShowCarsTableViewControllerOutput: class {
     func queryAllCarsFromDatabase()
     func fetchUserAndUserCarsFromNewUserVC(user: User, userCars: [CarItem])
+    func saveUserCars(userCars: [CarItem])
 }
 class ShowCarsTableViewController: UITableViewController, PresenterAlertHandler, ShowCarsTableViewControllerInput {
     
@@ -56,6 +57,7 @@ class ShowCarsTableViewController: UITableViewController, PresenterAlertHandler,
     //MARK:-Actions
     func saveUsersCars(_ sender: UIBarButtonItem) {
         _ = navigationController?.popViewController(animated: true)
+        presenter.saveUserCars(userCars: usersCars)
     }
     //MARK:-ShowCarsTableViewControllerInput
     func didFetchAllCarsFromDatabase(userCars: [CarItem]) {

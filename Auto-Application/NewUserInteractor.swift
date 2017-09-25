@@ -13,21 +13,25 @@ protocol NewUserInteractorInput: class {
     func updateUserToDatabase(userID: Int64, newUser: User, userCars: [CarItem])
     func updateUserCarToDatabase(carID: Int64, newCar: CarItem)
     func saveUserFromAutoUserVC(_ user: User)
+    func fetchUserCarsFromShowCarsVC(_ userCars: [CarItem])
 }
 protocol NewUserInteractorOutput: class {
     func didFetchUserCarFromDatabase(userCar: CarItem)
     func didHandleErrorFromFetchingDatabase(error: String)
     func didFetchUserFromAutoUserVC(_ user: User)
+    func didFetchUserCarsFromShowCarsVC(_ userCars: [CarItem])
 }
 class NewUserInteractor: NewUserInteractorInput {
     
     var userDatabase: UsersDatabaseHandler?
     var carDatabase: CarsDatabaseHandler?
     weak var presenter: NewUserPresenterInput!
-    var user: User?
     //MARK:-RoutinInputData
     func saveUserFromAutoUserVC(_ user: User) {
         presenter.didFetchUserFromAutoUserVC(user)
+    }
+    func fetchUserCarsFromShowCarsVC(_ userCars: [CarItem]) {
+        presenter.didFetchUserCarsFromShowCarsVC(userCars)
     }
     //MARK:-UserDatabase
     func updateUserToDatabase(userID: Int64, newUser: User, userCars: [CarItem]) {

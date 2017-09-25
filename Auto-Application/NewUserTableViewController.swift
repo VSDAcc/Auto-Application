@@ -11,6 +11,7 @@ protocol NewUserTableViewControllerInput: class {
     func didFetchUserCarFromDatabase(userCar: CarItem)
     func didHandleErrorFromFetchingDatabase(error: String)
     func didFetchUserFromAutoUserVC(_ user: User)
+    func didFetchUserCarsFromShowCarsVC(_ userCars: [CarItem])
 }
 protocol NewUserTableViewControllerOutput: class {
     func queryAllUserCarsFromDatabase(userID: Int64)
@@ -93,6 +94,9 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
     }
     func didFetchUserFromAutoUserVC(_ user: User) {
         self.user = user
+    }
+    func didFetchUserCarsFromShowCarsVC(_ userCars: [CarItem]) {
+        self.userCars = userCars
     }
     //MARK:-Actions
     func saveNewUser(_ sender: UIBarButtonItem) {

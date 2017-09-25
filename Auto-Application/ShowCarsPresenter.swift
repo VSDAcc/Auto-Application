@@ -8,15 +8,19 @@
 
 import UIKit
 protocol ShowCarsPresenterInput: ShowCarsTableViewControllerOutput, ShowCarsInteractorOutput {
-    
+    weak var delegate: NewUserModuleInput! {get set}
 }
 protocol ShowCarsPresenterOutput: ShowCarsTableViewControllerInput {
-    
 }
 class ShowCarsPresenter: ShowCarsPresenterInput {
     
     weak var view: ShowCarsTableViewControllerInput!
     var interactor: ShowCarsInteractorInput!
+    weak var delegate: NewUserModuleInput!
+    //MARK:-Output
+    func saveUserCars(userCars: [CarItem]) {
+        delegate.didFetchUserCars(userCars)
+    }
     //MARK:-Interactor
     func queryAllCarsFromDatabase() {
         interactor.queryAllCarsFromDatabase()
