@@ -26,7 +26,7 @@ class NewUserRouter: NewUserRouterInput {
                 if view.user != nil {
                 destinationVC.presenter.didHandleUserAndUserCarsFromNewUserVC(user: view.user!, userCars: view.userCars)
                 }
-                destinationVC.presenter.delegate = view.presenter
+                destinationVC.presenter.newUserModuleInput = view.presenter
             }
         }
     }

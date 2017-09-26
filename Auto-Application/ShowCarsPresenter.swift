@@ -7,8 +7,7 @@
 //
 
 import UIKit
-protocol ShowCarsPresenterInput: ShowCarsTableViewControllerOutput, ShowCarsInteractorOutput {
-    weak var delegate: NewUserModuleInput! {get set}
+protocol ShowCarsPresenterInput: ShowCarsTableViewControllerOutput, ShowCarsInteractorOutput, ShowCarsModuleOutput {
 }
 protocol ShowCarsPresenterOutput: ShowCarsTableViewControllerInput {
 }
@@ -16,10 +15,10 @@ class ShowCarsPresenter: ShowCarsPresenterInput {
     
     weak var view: ShowCarsTableViewControllerInput!
     var interactor: ShowCarsInteractorInput!
-    weak var delegate: NewUserModuleInput!
+    weak var newUserModuleInput: NewUserModuleInput!
     //MARK:-Output
     func saveUserCars(userCars: [CarItem]) {
-        delegate.didFetchUserCars(userCars)
+        newUserModuleInput.didFetchUserCars(userCars)
     }
     //MARK:-Interactor
     func queryAllCarsFromDatabase() {
