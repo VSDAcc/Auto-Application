@@ -16,10 +16,11 @@ protocol ShowCarsTableViewControllerOutput: class {
     func queryAllCarsFromDatabase()
     func fetchUserAndUserCarsFromNewUserVC(user: User, userCars: [CarItem])
     func saveUserCars(userCars: [CarItem])
+    func backToNewUserVC(animated: Bool)
 }
 class ShowCarsTableViewController: UITableViewController, PresenterAlertHandler, ShowCarsTableViewControllerInput {
     
-    struct CellConstants {
+    fileprivate struct CellConstants {
         static let cellID = "ShowCarsCell"
         static let cellNIB = "ShowCarsTableViewCell"
     }
@@ -30,13 +31,13 @@ class ShowCarsTableViewController: UITableViewController, PresenterAlertHandler,
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     var presenter: ShowCarsPresenterInput!
-    var cars = [CarItem]() {
+    fileprivate var cars = [CarItem]() {
         didSet {
             tableView.reloadData()
         }
     }
     var user: User?
-    var usersCars = [CarItem]()
+    fileprivate var usersCars = [CarItem]()
     //MARL:-Loading
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +57,7 @@ class ShowCarsTableViewController: UITableViewController, PresenterAlertHandler,
     }
     //MARK:-Actions
     func saveUsersCars(_ sender: UIBarButtonItem) {
-        _ = navigationController?.popViewController(animated: true)
+        presenter.backToNewUserVC(animated: true)
         presenter.saveUserCars(userCars: usersCars)
     }
     //MARK:-ShowCarsTableViewControllerInput

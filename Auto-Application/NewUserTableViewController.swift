@@ -21,17 +21,18 @@ protocol NewUserTableViewControllerOutput: class {
     func sendUserToShowCarsVC(_ segue: UIStoryboardSegue, sender: Any?)
     func openShowCarsVC(sender: Any?)
     func fetchUserFromAutoUserVC(_ user: User)
+    func backToAutoUserVC(animated: Bool)
 }
 class NewUserTableViewController: UITableViewController, PresenterAlertHandler, NewUserTableViewControllerInput {
-    struct Sections {
+    fileprivate struct Sections {
         static let profileSection = 0
         static let usersCarsSection = 1
     }
-    struct ProfileRow {
+    fileprivate struct ProfileRow {
         static let accountRow = 0
         static let addCarRow = 1
     }
-    struct CellConstants {
+    fileprivate struct CellConstants {
         static let carCellID = "CarCell"
         static let carCellNIB = "CarTableViewCell"
         static let accountInfoCell = "AccountInfo"
@@ -101,12 +102,13 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
     //MARK:-Actions
     func saveNewUser(_ sender: UIBarButtonItem) {
         if !profileAccountTableViewCell!.userNameTextField.text!.isEmpty && !profileAccountTableViewCell!.userAdressTextField.text!.isEmpty {
-            _ = self.navigationController?.popViewController(animated: true)
+            presenter.backToAutoUserVC(animated: true)
+            let driverImage = "driver.png"
             if user != nil {
-                let newUser = AutoUser(name: profileAccountTableViewCell!.userNameTextField.text!, userID: user!.userID, imageString: "driver.png", adress: profileAccountTableViewCell!.userAdressTextField.text!)
+                let newUser = AutoUser(name: profileAccountTableViewCell!.userNameTextField.text!, userID: user!.userID, imageString: driverImage, adress: profileAccountTableViewCell!.userAdressTextField.text!)
                 presenter.updateUserToDatabase(userID: user!.userID, newUser: newUser, userCars: userCars)
             }else {
-                let newUser = AutoUser(name: profileAccountTableViewCell!.userNameTextField.text!, imageString: "driver.jpeg", adress: profileAccountTableViewCell!.userAdressTextField.text!)
+                let newUser = AutoUser(name: profileAccountTableViewCell!.userNameTextField.text!, imageString: driverImage, adress: profileAccountTableViewCell!.userAdressTextField.text!)
                 presenter.saveNewUserToDatabase(newUser: newUser, userCars: userCars)
             }
         }else {

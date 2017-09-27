@@ -54,4 +54,12 @@ class NewUserPresenter: NewUserPresenterInput {
     func openShowCarsVC(sender: Any?) {
         router.openShowCarsVC(sender: sender)
     }
+    func backToAutoUserVC(animated: Bool) {
+        router.backToAutoUserVC(animated: animated)
+    }
 }
+
+
+
+
+

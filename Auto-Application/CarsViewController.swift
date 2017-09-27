@@ -17,7 +17,7 @@ protocol CarsViewControllerOutput: class {
     func deleteCarFromDatabase(carID: Int64)
 }
 class CarsViewController: UIViewController, PresenterAlertHandler, CarsViewControllerInput {
-    struct CellConstants {
+    fileprivate struct CellConstants {
         static let cellID = "CarCell"
         static let cellNIB = "CarTableViewCell"
     }
@@ -30,7 +30,7 @@ class CarsViewController: UIViewController, PresenterAlertHandler, CarsViewContr
         }
     }
     var presenter: CarsPresenterInput!
-    var cars = [CarItem]() {
+    fileprivate var cars = [CarItem]() {
         didSet {
             tableView.reloadData()
         }

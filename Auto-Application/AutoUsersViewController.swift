@@ -18,7 +18,7 @@ protocol AutoUserViewControllerOutput: class {
     func openNewUserVC(sender: Any?)
 }
 class AutoUsersViewController: UIViewController, PresenterAlertHandler, AutoUserViewControllerInput {
-    struct CellConstants {
+    fileprivate struct CellConstants {
         static let cellID = "AutoUserCell"
         static let cellNIB = "AutoUsersTableViewCell"
     }
@@ -31,7 +31,7 @@ class AutoUsersViewController: UIViewController, PresenterAlertHandler, AutoUser
         }
     }
     var presenter: AutoUserPresenterInput!
-    var users = [User]() {
+    fileprivate var users = [User]() {
         didSet {
             tableView.reloadData()
         }

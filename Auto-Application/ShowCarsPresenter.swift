@@ -15,6 +15,7 @@ class ShowCarsPresenter: ShowCarsPresenterInput {
     
     weak var view: ShowCarsTableViewControllerInput!
     var interactor: ShowCarsInteractorInput!
+    var router: ShowCarsRouterInput!
     weak var newUserModuleInput: NewUserModuleInput!
     //MARK:-Output
     func saveUserCars(userCars: [CarItem]) {
@@ -37,4 +38,13 @@ class ShowCarsPresenter: ShowCarsPresenterInput {
     func didHandleUserAndUserCarsFromNewUserVC(user: User, userCars: [CarItem]) {
         view.didHandleUserAndUserCarsFromNewUserVC(user: user, userCars: userCars)
     }
+    //MARK:-Router
+    func backToNewUserVC(animated: Bool) {
+        router.backToNewUserVC(animated: animated)
+    }
 }
+
+
+
+
+

@@ -11,6 +11,7 @@ import UIKit
 protocol NewUserRouterInput: class {
     func sendUserToShowCarsVC(_ segue: UIStoryboardSegue, sender: Any?)
     func openShowCarsVC(sender: Any?)
+    func backToAutoUserVC(animated: Bool)
 }
 class NewUserRouter: NewUserRouterInput {
     weak var view: NewUserTableViewController!
@@ -19,6 +20,9 @@ class NewUserRouter: NewUserRouterInput {
     }
     func openShowCarsVC(sender: Any?) {
         view.performSegue(withIdentifier: Segues.showUsersCars, sender: sender)
+    }
+    func backToAutoUserVC(animated: Bool) {
+        _ = view.navigationController?.popViewController(animated: animated)
     }
     func sendUserToShowCarsVC(_ segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.showUsersCars {
