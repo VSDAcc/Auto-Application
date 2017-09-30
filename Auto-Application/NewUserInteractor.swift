@@ -40,18 +40,18 @@ class NewUserInteractor: NewUserInteractorInput {
         }
     }
     func saveNewUserToDatabase(newUser: User, userCars: [CarItem]) {
-        if let newUserID = userDatabase?.addUser(user: newUser, onFailure: { [unowned self] (error) in
-            self.presenter.didHandleErrorFromFetchingDatabase(error: error)
+        if let newUserID = userDatabase?.addUser(user: newUser, onFailure: { [weak self] (error) in
+            self?.presenter.didHandleErrorFromFetchingDatabase(error: error)
         }) {
             self.updateAllUsersCarsToDatabase(userCars: userCars, userID: newUserID)
         }
     }
     //MARK:-CarDatabase
     func queryAllUserCarsFromDatabase(userID: Int64) {
-        carDatabase?.queryUsersCar(usersID: userID, onSuccess: { [unowned self] (car) in
-            self.presenter.didFetchUserCarFromDatabase(userCar: car)
-        }, onFailure: { [unowned self] (error) in
-            self.presenter.didHandleErrorFromFetchingDatabase(error: error)
+        carDatabase?.queryUsersCar(usersID: userID, onSuccess: { [weak self] (car) in
+            self?.presenter.didFetchUserCarFromDatabase(userCar: car)
+        }, onFailure: { [weak self] (error) in
+            self?.presenter.didHandleErrorFromFetchingDatabase(error: error)
         })
     }
     func updateUserCarToDatabase(carID: Int64, newCar: CarItem) {

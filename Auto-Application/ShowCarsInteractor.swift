@@ -26,10 +26,10 @@ class ShowCarsInteractor: ShowCarsInteractorInput {
     }
     //MARK:-CarDatabase
     func queryAllCarsFromDatabase() {
-        carDatabase?.queryAllCars(onSucces: { [unowned self](carsArray) in
-            self.presenter.didFetchAllCarsFromDatabase(userCars: carsArray)
-        }, onFailure: { [unowned self] (error) in
-            self.presenter.didHandleErrorFromFetchingDatabase(error: error)
+        carDatabase?.queryAllCars(onSucces: { [weak self](carsArray) in
+            self?.presenter.didFetchAllCarsFromDatabase(userCars: carsArray)
+        }, onFailure: { [weak self] (error) in
+            self?.presenter.didHandleErrorFromFetchingDatabase(error: error)
         })
     }
 }

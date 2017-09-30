@@ -20,10 +20,10 @@ class AutoUserInteractor: AutoUserInteractorInput {
     var userDatabase: UsersDatabaseHandler?
     weak var presenter: AutoUserPresenterInput!
     func queryAllUsersFromDatabase() {
-        userDatabase?.queryAllUsers(onSucces: { [unowned self] (usersArray) in
-            self.presenter.didFetchAllUsersFromDatabase(usersArray: usersArray)
-        }, onFailure: { [unowned self] (error) in
-            self.presenter.didHandleErrorFromFetchingUsersFromDatabase(error: error)
+        userDatabase?.queryAllUsers(onSucces: { [weak self] (usersArray) in
+            self?.presenter.didFetchAllUsersFromDatabase(usersArray: usersArray)
+        }, onFailure: { [weak self] (error) in
+            self?.presenter.didHandleErrorFromFetchingUsersFromDatabase(error: error)
         })
     }
     func deleteUserFromDatabase(userID:Int64) {
