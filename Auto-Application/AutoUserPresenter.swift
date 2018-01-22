@@ -21,17 +21,34 @@ class AutoUserPresenter: AutoUserPresenterInput {
 
     //MARK:-Interactor
     func queryAllUsersFromDatabase() {
-        interactor.queryAllUsersFromDatabase()
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.interactor.queryAllUsersFromDatabase()
+        }
     }
     func deleteUserFromDatabase(userID:Int64) {
-        interactor.deleteUserFromDatabase(userID: userID)
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.interactor.deleteUserFromDatabase(userID: userID)
+        }
+    }
+    func selectedItemAt(indexPath: IndexPath) -> User {
+        return interactor.selectedItemAt(indexPath: indexPath)
+    }
+    func numberOfItemsInSection(section: Int) -> Int {
+        return interactor.numberOfItemsInSection(section: section)
+    }
+    func removeItemAt(indexPath: IndexPath) {
+        interactor.removeItemAt(indexPath: indexPath)
     }
     //MARK:-View
-    func didFetchAllUsersFromDatabase(usersArray: [User]) {
-        view.didFetchAllUsersFromDatabase(usersArray: usersArray)
+    func didFetchAllUsersFromDatabase() {
+        DispatchQueue.main.async {
+            self.view.didFetchAllUsersFromDatabase()
+        }
     }
     func didHandleErrorFromFetchingUsersFromDatabase(error: String) {
-        view.didHandleErrorFromFetchingUsersFromDatabase(error: error)
+        DispatchQueue.main.async {
+            self.view.didHandleErrorFromFetchingUsersFromDatabase(error: error)
+        }
     }
     //MARK:-Router
     func sendUserToNewUserVC(_ segue: UIStoryboardSegue, sender: Any?) {

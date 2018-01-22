@@ -8,12 +8,15 @@
 
 import UIKit
 protocol AutoUserViewControllerInput: class {
-    func didFetchAllUsersFromDatabase(usersArray: [User])
+    func didFetchAllUsersFromDatabase()
     func didHandleErrorFromFetchingUsersFromDatabase(error: String)
 }
 protocol AutoUserViewControllerOutput: class {
     func queryAllUsersFromDatabase()
     func deleteUserFromDatabase(userID:Int64)
+    func selectedItemAt(indexPath: IndexPath) -> User
+    func numberOfItemsInSection(section: Int) -> Int
+    func removeItemAt(indexPath: IndexPath)
     func sendUserToNewUserVC(_ segue: UIStoryboardSegue, sender: Any?)
     func openNewUserVC(sender: Any?)
 }
@@ -31,11 +34,6 @@ class AutoUsersViewController: UIViewController, PresenterAlertHandler, AutoUser
         }
     }
     var presenter: AutoUserPresenterInput!
-    fileprivate var users = [User]() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
     //MARK:-Loading
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,10 +46,8 @@ class AutoUsersViewController: UIViewController, PresenterAlertHandler, AutoUser
         }
     }
     //MARK:-AutoUserViewControllerInput
-    func didFetchAllUsersFromDatabase(usersArray: [User]) {
-        DispatchQueue.main.async {
-            self.users = usersArray
-        }
+    func didFetchAllUsersFromDatabase() {
+        self.tableView.reloadData()
     }
     func didHandleErrorFromFetchingUsersFromDatabase(error: String) {
         DispatchQueue.main.async {
@@ -68,11 +64,11 @@ extension AutoUsersViewController: UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.users.count
+        return self.presenter.numberOfItemsInSection(section: section)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: AutoUsersTableViewCell = tableView.dequeueReusableCell(withIdentifier: CellConstants.cellID, for: indexPath) as! AutoUsersTableViewCell
-        let user = self.users[indexPath.row]
+        let user = presenter.selectedItemAt(indexPath: indexPath)
         cell.autoUser = user
         return cell
     }
@@ -80,14 +76,14 @@ extension AutoUsersViewController: UITableViewDataSource {
 extension AutoUsersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let user = self.users[indexPath.row]
+        let user = presenter.selectedItemAt(indexPath: indexPath)
         presenter?.openNewUserVC(sender: user)
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        let user = self.users[indexPath.row]
+        let user = presenter.selectedItemAt(indexPath: indexPath)
         tableView.beginUpdates()
         tableView.deleteRows(at: [indexPath], with: .automatic)
-        self.users.remove(at: indexPath.row)
+        presenter.removeItemAt(indexPath: indexPath)
         tableView.endUpdates()
         presenter?.deleteUserFromDatabase(userID: user.userID)
     }
@@ -105,7 +101,7 @@ extension AutoUsersViewController: UITableViewDelegate {
         UIView.animate(withDuration: 0.8, animations:{
             cell.alpha = 1
         })
-        let rotationAngle = 90.0 * CGFloat(M_PI / 180)
+        let rotationAngle = 90.0 * CGFloat(Double.pi / 180)
         let rotationTransform = CATransform3DMakeRotation(rotationAngle, 0, 0, 1)
         cell.layer.transform = rotationTransform
         UIView.animate(withDuration: 0.8, animations:{

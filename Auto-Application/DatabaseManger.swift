@@ -137,7 +137,6 @@ class CarDatabaseManager: CarsDatabaseHandler  {
                 table.column(licensePlate)
                 table.column(userID)
             })
-            print("created table successfully")
         }catch {
             print("unable to create table")
         }

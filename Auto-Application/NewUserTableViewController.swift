@@ -64,7 +64,9 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
     var user: User?
     var userCars = [CarItem]() {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     //MARK:-Loading
@@ -74,7 +76,7 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
         registerCarCellToTableview()
         if user != nil {
             DispatchQueue.global(qos: .userInteractive).async {
-            self.presenter.queryAllUserCarsFromDatabase(userID: self.user!.userID)
+                self.presenter.queryAllUserCarsFromDatabase(userID: self.user!.userID)
             }
         }
     }
@@ -88,7 +90,9 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
     }
     //MARK:-NewUserViewControllerInput
     func didFetchUserCarFromDatabase(userCar: CarItem) {
-        self.userCars.append(userCar)
+        DispatchQueue.main.async {
+            self.userCars.append(userCar)
+        }
     }
     func didHandleErrorFromFetchingDatabase(error: String) {
         DispatchQueue.main.async {
@@ -102,7 +106,7 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
         self.userCars = userCars
     }
     //MARK:-Actions
-    func saveNewUser(_ sender: UIBarButtonItem) {
+    @objc func saveNewUser(_ sender: UIBarButtonItem) {
         if !profileAccountTableViewCell!.userNameTextField.text!.isEmpty && !profileAccountTableViewCell!.userAdressTextField.text!.isEmpty {
             presenter.backToAutoUserVC(animated: true)
             let driverImage = "driver.png"
@@ -121,7 +125,7 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
     }
     //MAR:-Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            presenter.sendUserToShowCarsVC(segue, sender: sender)
+        presenter.sendUserToShowCarsVC(segue, sender: sender)
     }
     //MARK:-UITableViewDatasource
     override func numberOfSections(in tableView: UITableView) -> Int {

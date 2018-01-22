@@ -33,7 +33,9 @@ class ShowCarsTableViewController: UITableViewController, PresenterAlertHandler,
     var presenter: ShowCarsPresenterInput!
     fileprivate var cars = [CarItem]() {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     var user: User?
@@ -58,13 +60,15 @@ class ShowCarsTableViewController: UITableViewController, PresenterAlertHandler,
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveUsersCars(_ :)))
     }
     //MARK:-Actions
-    func saveUsersCars(_ sender: UIBarButtonItem) {
+    @objc func saveUsersCars(_ sender: UIBarButtonItem) {
         presenter.backToNewUserVC(animated: true)
         presenter.saveUserCars(userCars: usersCars)
     }
     //MARK:-ShowCarsTableViewControllerInput
     func didFetchAllCarsFromDatabase(userCars: [CarItem]) {
-        self.cars = userCars
+        DispatchQueue.main.async {
+            self.cars = userCars
+        }
     }
     func didHandleErrorFromFetchingDatabase(error: String) {
         DispatchQueue.main.async {
@@ -72,8 +76,10 @@ class ShowCarsTableViewController: UITableViewController, PresenterAlertHandler,
         }
     }
     func didHandleUserAndUserCarsFromNewUserVC(user: User, userCars: [CarItem]) {
-        self.user = user
-        self.usersCars = userCars
+        DispatchQueue.main.async {
+            self.user = user
+            self.usersCars = userCars
+        }
     }
     //MARK:-UITableViewDatasource
     override func numberOfSections(in tableView: UITableView) -> Int {

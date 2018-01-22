@@ -32,7 +32,6 @@ class CarsViewController: UIViewController, PresenterAlertHandler, CarsViewContr
     var presenter: CarsPresenterInput!
     fileprivate var cars = [CarItem]() {
         didSet {
-            print("reloaded")
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -58,12 +57,16 @@ class CarsViewController: UIViewController, PresenterAlertHandler, CarsViewContr
         CarsAssembly.sharedInstance.buildAutoUserModule(self)
     }
     //MARK:-Actions
-    func addCars(_ sender: UIBarButtonItem) {
-        presenter.addMoreCarsToDatabase()
+    @objc func addCars(_ sender: UIBarButtonItem) {
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.presenter.addMoreCarsToDatabase()
+        }
     }
     //MARK:-CarsViewControllerInput
     func didFetchAllCarsFromDatabase(userCars: [CarItem]) {
-        self.cars = userCars
+        DispatchQueue.main.async {
+            self.cars = userCars
+        }
     }
     func didHandleErrorFromFetchingDatabase(error: String) {
         DispatchQueue.main.async {
