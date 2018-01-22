@@ -32,7 +32,10 @@ class CarsViewController: UIViewController, PresenterAlertHandler, CarsViewContr
     var presenter: CarsPresenterInput!
     fileprivate var cars = [CarItem]() {
         didSet {
-            tableView.reloadData()
+            print("reloaded")
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     //MARK:-Loading
@@ -42,7 +45,9 @@ class CarsViewController: UIViewController, PresenterAlertHandler, CarsViewContr
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter.queryAllCarsFromDatabase()
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.presenter.queryAllCarsFromDatabase()
+        }
     }
     private func configureNavigationBar() {
         navigationItem.title = "Cars"

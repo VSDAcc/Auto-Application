@@ -42,7 +42,9 @@ class ShowCarsTableViewController: UITableViewController, PresenterAlertHandler,
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCarCellToTableview()
-        presenter.queryAllCarsFromDatabase()
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.presenter.queryAllCarsFromDatabase()
+        }
     }
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -65,8 +65,8 @@ class UserDatabaseManager: UsersDatabaseHandler {
             for user in try db!.prepare(self.tblProduct) {
                 let newUser = AutoUser(name: user[name], userID: user[id], imageString: user[imageName], adress: user[adress])
                 usersArray.append(newUser)
-                onSucces(usersArray)
             }
+             onSucces(usersArray)
         }catch {
             onFailure("Fail on query users")
         }
@@ -157,8 +157,8 @@ class CarDatabaseManager: CarsDatabaseHandler  {
             for car in try db!.prepare(self.tblProduct) {
                 let newCar = Car(carModel: car[carName], carImage: car[carImage], carID: car[id], licensePlate: car[licensePlate], userID: car[userID])
                 carsArray.append(newCar)
-                onSucces(carsArray)
             }
+            onSucces(carsArray)
         }catch {
             onFailure("Fail on query cars")
         }

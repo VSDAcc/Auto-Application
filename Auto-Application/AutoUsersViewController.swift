@@ -43,7 +43,9 @@ class AutoUsersViewController: UIViewController, PresenterAlertHandler, AutoUser
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter.queryAllUsersFromDatabase()
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.presenter.queryAllUsersFromDatabase()
+        }
     }
     //MARK:-AutoUserViewControllerInput
     func didFetchAllUsersFromDatabase(usersArray: [User]) {

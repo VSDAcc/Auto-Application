@@ -73,7 +73,9 @@ class NewUserTableViewController: UITableViewController, PresenterAlertHandler, 
         configureNavigationBar()
         registerCarCellToTableview()
         if user != nil {
-            presenter.queryAllUserCarsFromDatabase(userID: user!.userID)
+            DispatchQueue.global(qos: .userInteractive).async {
+            self.presenter.queryAllUserCarsFromDatabase(userID: self.user!.userID)
+            }
         }
     }
     override func awakeFromNib() {
