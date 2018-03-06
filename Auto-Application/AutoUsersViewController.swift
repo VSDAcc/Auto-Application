@@ -24,6 +24,7 @@ class AutoUsersViewController: UIViewController, PresenterAlertHandler, AutoUser
     fileprivate struct CellConstants {
         static let cellID = "AutoUserCell"
         static let cellNib = "AutoUsersTableViewCell"
+        static let autoUserCellNib = "AutoTableViewCell"
     }
     @IBOutlet weak var tableView: UITableView! {
         didSet {
