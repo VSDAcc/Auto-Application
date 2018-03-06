@@ -39,6 +39,10 @@ class AutoUsersViewController: UIViewController, PresenterAlertHandler, AutoUser
         super.awakeFromNib()
         AutoUserAssembly.sharedInstance.buildAutoUserModule(self)
     }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .white
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DispatchQueue.global(qos: .userInteractive).async {
