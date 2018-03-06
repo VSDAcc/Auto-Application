@@ -23,11 +23,11 @@ protocol AutoUserViewControllerOutput: class {
 class AutoUsersViewController: UIViewController, PresenterAlertHandler, AutoUserViewControllerInput {
     fileprivate struct CellConstants {
         static let cellID = "AutoUserCell"
-        static let cellNIB = "AutoUsersTableViewCell"
+        static let cellNib = "AutoUsersTableViewCell"
     }
     @IBOutlet weak var tableView: UITableView! {
         didSet {
-            let cellNib = UINib(nibName: CellConstants.cellNIB, bundle: nil)
+            let cellNib = UINib(nibName: CellConstants.cellNib, bundle: nil)
             tableView.register(cellNib, forCellReuseIdentifier: CellConstants.cellID)
             tableView.estimatedRowHeight = 100.0
             tableView.rowHeight = UITableViewAutomaticDimension
