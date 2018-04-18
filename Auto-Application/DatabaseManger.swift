@@ -54,7 +54,7 @@ class UserDatabaseManager: UsersDatabaseHandler {
             let id = try db!.run(insert)
             return id
         }catch {
-           onFailure("Error on add user")
+           onFailure("Error on add user data")
             return nil
         }
     }
@@ -68,7 +68,7 @@ class UserDatabaseManager: UsersDatabaseHandler {
             }
              onSucces(usersArray)
         }catch {
-            onFailure("Fail on query users")
+            onFailure("Fail on query users data")
         }
     }
     func updateUser(userID: Int64, newUser: User) -> Bool{
@@ -83,7 +83,7 @@ class UserDatabaseManager: UsersDatabaseHandler {
                 return true
             }
         }catch {
-            print("error to update user")
+            print("error to update user data")
             return false
         }
         return false
@@ -93,7 +93,7 @@ class UserDatabaseManager: UsersDatabaseHandler {
             let tblFilterUser = tblProduct.filter(id == userID)
             try db?.run(tblFilterUser.delete())
         }catch {
-            print("error to delete user")
+            print("error to delete user data")
         }
     }
 }
