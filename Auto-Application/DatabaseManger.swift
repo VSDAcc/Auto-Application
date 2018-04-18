@@ -35,7 +35,7 @@ class UserDatabaseManager: UsersDatabaseHandler {
             createTableProduct()
         }catch {
             db = nil
-            print("ubable to open database")
+            print("Ubable to open database ")
         }
     }
     private func createTableProduct() {
@@ -47,7 +47,7 @@ class UserDatabaseManager: UsersDatabaseHandler {
                 table.column(adress)
             })
         }catch {
-            print("unable to create table")
+            print("Unable to create table")
         }
     }
     func addUser(user: User, onFailure:@escaping(_ error: String) -> ()) -> Int64? {
@@ -56,7 +56,11 @@ class UserDatabaseManager: UsersDatabaseHandler {
             let id = try db!.run(insert)
             return id
         }catch {
+<<<<<<< HEAD
            onFailure("Error on add user data")
+=======
+           onFailure("Failed on add user")
+>>>>>>> SQLite_configuration
             return nil
         }
     }
@@ -70,7 +74,11 @@ class UserDatabaseManager: UsersDatabaseHandler {
             }
              onSucces(usersArray)
         }catch {
+<<<<<<< HEAD
             onFailure("Fail on query users data")
+=======
+            onFailure("Failed on query users ")
+>>>>>>> SQLite_configuration
         }
     }
     func updateUser(userID: Int64, newUser: User) -> Bool{
@@ -85,7 +93,11 @@ class UserDatabaseManager: UsersDatabaseHandler {
                 return true
             }
         }catch {
+<<<<<<< HEAD
             print("error to update user data")
+=======
+            print("Failed to update user")
+>>>>>>> SQLite_configuration
             return false
         }
         return false
@@ -95,7 +107,19 @@ class UserDatabaseManager: UsersDatabaseHandler {
             let tblFilterUser = tblProduct.filter(id == userID)
             try db?.run(tblFilterUser.delete())
         }catch {
+<<<<<<< HEAD
             print("error to delete user data")
+=======
+            print("Failed to delete user")
+        }
+    }
+    func deleteAllUsers(userID: Int64) {
+        do {
+            let tblFilterUser = tblProduct.filter(id == userID)
+            try db?.run(tblFilterUser.delete())
+        }catch {
+            print("Failed to delete user")
+>>>>>>> SQLite_configuration
         }
     }
 }
