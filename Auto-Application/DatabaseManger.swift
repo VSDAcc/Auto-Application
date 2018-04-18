@@ -26,6 +26,8 @@ class UserDatabaseManager: UsersDatabaseHandler {
     private let imageName = Expression<String>("imageName")
     private let adress = Expression<String>("adress")
     private let db: Connection?
+    private let avatarImage = Expression<String>("avatarImage")
+    
     init() {
         let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         do {
