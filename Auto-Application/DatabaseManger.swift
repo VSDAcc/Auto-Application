@@ -33,7 +33,7 @@ class UserDatabaseManager: UsersDatabaseHandler {
             createTableProduct()
         }catch {
             db = nil
-            print("ubable to open database")
+            print("Ubable to open database ")
         }
     }
     private func createTableProduct() {
@@ -45,7 +45,7 @@ class UserDatabaseManager: UsersDatabaseHandler {
                 table.column(adress)
             })
         }catch {
-            print("unable to create table")
+            print("Unable to create table")
         }
     }
     func addUser(user: User, onFailure:@escaping(_ error: String) -> ()) -> Int64? {
@@ -54,7 +54,7 @@ class UserDatabaseManager: UsersDatabaseHandler {
             let id = try db!.run(insert)
             return id
         }catch {
-           onFailure("Error on add user")
+           onFailure("Failed on add user")
             return nil
         }
     }
@@ -68,7 +68,7 @@ class UserDatabaseManager: UsersDatabaseHandler {
             }
              onSucces(usersArray)
         }catch {
-            onFailure("Fail on query users")
+            onFailure("Failed on query users ")
         }
     }
     func updateUser(userID: Int64, newUser: User) -> Bool{
@@ -83,7 +83,7 @@ class UserDatabaseManager: UsersDatabaseHandler {
                 return true
             }
         }catch {
-            print("error to update user")
+            print("Failed to update user")
             return false
         }
         return false
@@ -93,7 +93,15 @@ class UserDatabaseManager: UsersDatabaseHandler {
             let tblFilterUser = tblProduct.filter(id == userID)
             try db?.run(tblFilterUser.delete())
         }catch {
-            print("error to delete user")
+            print("Failed to delete user")
+        }
+    }
+    func deleteAllUsers(userID: Int64) {
+        do {
+            let tblFilterUser = tblProduct.filter(id == userID)
+            try db?.run(tblFilterUser.delete())
+        }catch {
+            print("Failed to delete user")
         }
     }
 }
