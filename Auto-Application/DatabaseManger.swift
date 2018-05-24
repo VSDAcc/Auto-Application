@@ -157,7 +157,7 @@ class CarDatabaseManager: CarsDatabaseHandler  {
             let insert = tblProduct.insert(carName <- car.carModel, carImage <- car.carImage, licensePlate <- car.licensePlate, userID <- car.userID)
             try db!.run(insert)
         }catch {
-            onFailure("Error on add car")
+            onFailure("Error on add car to database")
         }
     }
     func queryAllCars(onSucces:@escaping(_ cars: [CarItem]) -> (),
