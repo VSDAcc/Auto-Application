@@ -149,7 +149,7 @@ class CarDatabaseManager: CarsDatabaseHandler  {
                 table.column(userID)
             })
         }catch {
-            print("unable to create table")
+            print("Unable to create table in database")
         }
     }
     func addCar(car: CarItem, onFailure:@escaping(_ error: String) -> ()) {
