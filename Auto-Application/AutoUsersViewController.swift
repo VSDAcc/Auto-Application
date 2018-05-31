@@ -21,10 +21,13 @@ protocol AutoUserViewControllerOutput: class {
     func openNewUserVC(sender: Any?)
 }
 class AutoUsersViewController: UIViewController, PresenterAlertHandler, AutoUserViewControllerInput {
+    
     fileprivate struct CellConstants {
         static let cellID = "AutoUserCell"
         static let cellNib = "AutoUsersTableViewCell"
         static let autoUserCellNib = "AutoTableViewCell"
+        static let autoHeroUserCellNib = "autoHeroUserCellNib"
+        static let autoDefaulUserCellNib = "autoDefaulUserCellNib"
     }
     @IBOutlet weak var tableView: UITableView! {
         didSet {
