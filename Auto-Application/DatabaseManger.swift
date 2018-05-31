@@ -136,7 +136,7 @@ class CarDatabaseManager: CarsDatabaseHandler  {
             createTableProduct()
         }catch {
             db = nil
-            print("ubable to open database")
+            print("Ubable to open database")
         }
     }
     private func createTableProduct() {
@@ -170,7 +170,7 @@ class CarDatabaseManager: CarsDatabaseHandler  {
             }
             onSucces(carsArray)
         }catch {
-            onFailure("Fail on query cars")
+            onFailure("Fail on query cars in database")
         }
     }
     func queryUsersCar(usersID: Int64, onSuccess:@escaping(_ car: CarItem) ->(), onFailure:@escaping(_ error: String) -> ()) {
@@ -181,7 +181,7 @@ class CarDatabaseManager: CarsDatabaseHandler  {
                 onSuccess(usersCar)
             }
         }catch {
-            onFailure("error to load users Cars")
+            onFailure("Error to load users Cars from database")
         }
     }
     func updateCar(carID: Int64, newCar: CarItem) {
