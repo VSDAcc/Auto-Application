@@ -59,7 +59,7 @@ class AutoUsersViewController: UIViewController, PresenterAlertHandler, AutoUser
     }
     func didHandleErrorFromFetchingUsersFromDatabase(error: String) {
         DispatchQueue.main.async {
-            self.presentAlertWith(title: "Error", massage: error)
+            self.presentAlertWith(title: "Error Fetching User", massage: error)
         }
     }
     //MARK:-Segue
